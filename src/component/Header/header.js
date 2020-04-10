@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../../assets/img/google-icon.png';
 
 const header = () => {
 
