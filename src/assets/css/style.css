@@ -1,0 +1,42 @@
+.header {
+  padding: 20px 30px;
+  background-color: transparent;
+}
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-logo {
+  display: inline-block;
+  width: calc(100% - 220px);
+  font-size: 2.4rem;
+  font-family: cursive;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.562);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: "Lato", sans-serif;
+}
+
+/*# sourceMappingURL=style.css.map */
