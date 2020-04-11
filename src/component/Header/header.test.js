@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import checkPropTypes from 'check-prop-types';
 import { shallow } from 'enzyme';
 import Header from './header';
-import { findByAttr } from '../../test/utils';
+import { findByAttr, storeFactory, checkProps } from '../../test/utils';
 
-const setUp = () => {
- const component = shallow(<Header />);
+const setUp = (initialState) => {
+ const store = storeFactory(initialState);
+ const component = shallow(<Header store={store} />).dive().dive();
  return component;
 };
 
@@ -13,7 +15,7 @@ describe('Header Component', () => {
  let wrapper;
 
  beforeEach(() => {
-  wrapper = setUp();
+  wrapper = setUp(undefined);
  });
 
  test('Should render without error', () => {
@@ -25,5 +27,11 @@ describe('Header Component', () => {
   const logo = findByAttr(wrapper, 'udemy-clone-logo');
   expect(logo.length).toBe(1);
  });
+
+ // test('does not throw warning with expected props', () => {
+ //  const expectedProps = { auth: false, user: {} };
+ //  const propsError = checkProps(Header, expectedProps);
+ //  expect(propsError).toBeUndefined();
+ // });
 
 });
