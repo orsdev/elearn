@@ -1,10 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import authenticate from './reducers/authentication/authenticate';
+import combinedReducer from './reducers/combinedReducer.js';
 
-const combinedReducer = combineReducers({
- authenticate
-});
 
 const store = createStore(combinedReducer, applyMiddleware(ReduxThunk));
 
