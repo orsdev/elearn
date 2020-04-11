@@ -15,10 +15,11 @@ const Button = (props) => {
   var button = (
    <GoogleLogin
     className="hero-button btn"
-    clientId="298090003140-a782s0vh75oft0704e1q65i5m07f7oan.apps.googleusercontent.com"
+    clientId={process.env.REACT_APP_CLIENT_ID}
     buttonText="Log in with Google"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
+    isSignedIn={true}
     cookiePolicy={"single_host_origin"} />
   )
  };
