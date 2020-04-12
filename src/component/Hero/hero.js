@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button/button';
+import LoginButton from '../Button/logInButton';
 
 const Hero = (props) => {
 
@@ -14,7 +14,7 @@ const Hero = (props) => {
     <p>
      Learn from professional intructors. It’s easy to learn a new skill, and even easier to get started.
      </p>
-    <Button />
+    <LoginButton />
    </div>
 
   </div>
