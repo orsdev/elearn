@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import LogoutButton from '../Button/logoutButton/logoutButton';
 
 const Header = (props) => {
 
@@ -26,7 +27,7 @@ const Header = (props) => {
     {dropdown ?
      <ul className="header-dropdown">
       <li>{props.user.name}</li>
-      <li>Logout</li>
+      <li><LogoutButton /></li>
      </ul>
      : null}
    </div>
