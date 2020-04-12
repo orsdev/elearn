@@ -23,7 +23,7 @@ const Header = (props) => {
     <img
      onClick={toggleDropdown}
      src={props.user.imageUrl}
-     alt="user picture" />
+     alt={props.user.name} />
     {dropdown ?
      <ul className="header-dropdown">
       <li>{props.user.name}</li>
