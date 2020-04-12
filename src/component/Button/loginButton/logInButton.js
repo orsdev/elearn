@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as action from '../../../store/action';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,20 +6,20 @@ import GoogleLogin from 'react-google-login';
 
 const LoginButton = (props) => {
 
+ useEffect(() => {
+
+ }, [props.auth]);
+
  const responseGoogle = (response) => {
   if (response) {
    props.onLogInUser(response.profileObj);
   }
  };
 
- const logOut = (response) => {
-  console.log(response)
- }
-
  if (!props.auth) {
   var button = (
    <GoogleLogin
-    className="hero-button btn"
+    className="login-btn"
     clientId={process.env.REACT_APP_CLIENT_ID}
     buttonText="Log in with Google"
     onSuccess={responseGoogle}
