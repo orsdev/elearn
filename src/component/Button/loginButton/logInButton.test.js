@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginButton from './logInButton';
 import { shallow } from 'enzyme';
-import { findByAttr, storeFactory, checkProps } from '../../test/utils';
+import { findByAttr, storeFactory, checkProps } from '../../../test/utils';
 
 
 const setUp = (initialState) => {

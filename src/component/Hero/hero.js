@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginButton from '../Button/logInButton';
+import LoginButton from '../Button/loginButton/logInButton';
 
 const Hero = (props) => {
 

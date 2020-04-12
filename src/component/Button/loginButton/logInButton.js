@@ -1,5 +1,5 @@
 import React from 'react';
-import * as action from '../../store/action';
+import * as action from '../../../store/action';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GoogleLogin from 'react-google-login';
