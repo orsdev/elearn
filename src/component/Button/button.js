@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as action from '../../store/action';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import GoogleLogin from 'react-google-login';
 
 const Button = (props) => {
 
  const responseGoogle = (response) => {
   if (response) {
-   props.onGetUser(response.profileObj);
+   props.onLogInUser(response.profileObj);
   }
  };
 
@@ -31,6 +32,10 @@ const Button = (props) => {
  )
 };
 
+Button.propTypes = {
+ onLogInUser: PropTypes.func.isRequired
+};
+
 const mapStateToProps = (state) => {
  return {
   auth: state.authenticate.auth,
@@ -40,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
  return {
-  onGetUser: (user) => dispatch(action.getUser(user))
+  onLogInUser: (user) => dispatch(action.logInUser(user))
  }
 }
 

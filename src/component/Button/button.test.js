@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './button';
 import { shallow } from 'enzyme';
-import { findByAttr, storeFactory } from '../../test/utils';
+import { findByAttr, storeFactory, checkProps } from '../../test/utils';
 
 
 const setUp = (initialState) => {
@@ -21,6 +21,11 @@ describe('Button Component', () => {
  test('Should render without error', () => {
   const component = findByAttr(wrapper, 'button-component');
   expect(component.length).toBe(1);
+ });
+
+ test('does not throw warning with expected props', () => {
+  const expectedProps = { onLogInUser: () => { } };
+  checkProps(Button, expectedProps);
  });
 
 });

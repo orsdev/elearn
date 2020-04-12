@@ -49,7 +49,7 @@ const Header = (props) => {
 Header.propTypes = {
  auth: PropTypes.bool,
  user: PropTypes.object
-}
+};
 
 const mapStateToProps = (state) => {
  return {

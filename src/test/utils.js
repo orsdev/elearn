@@ -12,6 +12,6 @@ export const storeFactory = (initialState) => {
 };
 
 export const checkProps = (component, expectedProps) => {
- const propsErr = checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
- return propsErr;
+ const propsError = checkPropTypes(component.propTypes, expectedProps, 'prop', component.name);
+ expect(propsError).toBeUndefined();
 };

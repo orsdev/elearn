@@ -12,7 +12,7 @@ describe('action testing', () => {
     user: {}
    }
 
-   const action = actions.getUser({});
+   const action = actions.logInUser({});
    expect(action).toEqual(user);
   });
 

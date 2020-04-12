@@ -1,5 +1,4 @@
 import React from 'react';
-import checkPropTypes from 'check-prop-types';
 import { shallow } from 'enzyme';
 import Header from './header';
 import { findByAttr, storeFactory, checkProps } from '../../test/utils';
@@ -30,8 +29,7 @@ describe('Header Component', () => {
 
  test('does not throw warning with expected props', () => {
   const expectedProps = { auth: false, user: {} };
-  const propsError = checkProps(Header, expectedProps);
-  expect(propsError).toBeUndefined();
+  checkProps(Header, expectedProps);
  });
 
 });
