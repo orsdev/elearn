@@ -5,7 +5,7 @@ describe('action testing', () => {
 
  describe('Authenticate action', () => {
 
-  test('Should return object', () => {
+  test('logInUser action should return object', () => {
 
    const user = {
     type: types.LOGIN_USER,
@@ -13,6 +13,16 @@ describe('action testing', () => {
    }
 
    const action = actions.logInUser({});
+   expect(action).toEqual(user);
+  });
+
+  test('logOutUser action should return object', () => {
+
+   const user = {
+    type: types.LOGOUT_USER,
+   }
+
+   const action = actions.logOutUser();
    expect(action).toEqual(user);
   });
 
