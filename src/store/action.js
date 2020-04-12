@@ -6,3 +6,9 @@ export const logInUser = (user) => {
   user: user
  }
 };
+
+export const logOutUser = () => {
+ return {
+  type: types.LOGOUT_USER
+ }
+};
