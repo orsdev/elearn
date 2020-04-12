@@ -30,7 +30,8 @@ const LoginButton = (props) => {
  };
 
  return (
-  <div data-test="loginButton-component">
+  <div
+   data-test="loginButton-component">
    {button}
   </div>
  )
