@@ -7,7 +7,7 @@ const initialState = {
 
 const authenticate = (state = initialState, action) => {
  switch (action.type) {
-  case types.USER:
+  case types.LOGIN_USER:
    return {
     ...state,
     auth: true,

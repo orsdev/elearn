@@ -28,10 +28,10 @@ describe('Header Component', () => {
   expect(logo.length).toBe(1);
  });
 
- // test('does not throw warning with expected props', () => {
- //  const expectedProps = { auth: false, user: {} };
- //  const propsError = checkProps(Header, expectedProps);
- //  expect(propsError).toBeUndefined();
- // });
+ test('does not throw warning with expected props', () => {
+  const expectedProps = { auth: false, user: {} };
+  const propsError = checkProps(Header, expectedProps);
+  expect(propsError).toBeUndefined();
+ });
 
 });

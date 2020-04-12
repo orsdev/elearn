@@ -8,7 +8,7 @@ describe('action testing', () => {
   test('Should return object', () => {
 
    const user = {
-    type: types.USER,
+    type: types.LOGIN_USER,
     user: {}
    }
 
