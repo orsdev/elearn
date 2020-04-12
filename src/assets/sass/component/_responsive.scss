@@ -1,0 +1,46 @@
+@media (min-width: 0) and (max-width: 840px) {
+  .hero {
+    &-body {
+      width: 99%;
+      text-align: center;
+
+      p {
+        width: 419px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    &-logo {
+      width: calc(100% - 160px);
+      font-size: 1.8rem;
+    }
+
+    &-auth {
+      width: 150px;
+      text-align: right;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    &-body {
+      padding: 5px;
+
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      p {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
