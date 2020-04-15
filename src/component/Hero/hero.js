@@ -24,7 +24,7 @@ const Hero = (props) => {
  )
 };
 
-Hero.proptypes = {
+Hero.propTypes = {
  auth: PropTypes.bool,
  responseGoogle: PropTypes.func
 }
