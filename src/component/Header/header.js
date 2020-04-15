@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LogoutButton from '../Button/logoutButton/logoutButton';
 
@@ -22,12 +21,15 @@ const Header = (props) => {
     className="header-auth">
     <img
      onClick={toggleDropdown}
-     src={props.user.imageUrl}
-     alt={props.user.name} />
+     src={props.src}
+     alt={props.fullname} />
     {dropdown ?
      <ul className="header-dropdown">
-      <li>{props.user.name}</li>
-      <li><LogoutButton /></li>
+      <li>{props.fullname}</li>
+      <li>
+       <LogoutButton
+        logout={props.logout} />
+      </li>
      </ul>
      : null}
    </div>
@@ -49,14 +51,7 @@ const Header = (props) => {
 
 Header.propTypes = {
  auth: PropTypes.bool,
- user: PropTypes.object
+ logout: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
- return {
-  auth: state.authenticate.auth,
-  user: state.authenticate.user
- }
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header;
