@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import authenticate from './authentication/authenticate';
+import playListId from './playListId/playListId';
 
 const combinedReducer = combineReducers({
- authenticate
+ authenticate,
+ playListId
 });
 
 export default combinedReducer;
