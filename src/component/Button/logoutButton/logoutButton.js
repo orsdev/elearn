@@ -1,22 +1,17 @@
 import React from 'react';
-import * as action from '../../../store/action';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GoogleLogout } from 'react-google-login';
 
 const LogoutButton = (props) => {
 
- const logout = (response) => {
-  props.onLogOutUser();
- }
-
  return (
   <div data-test="logoutButton-component">
    <GoogleLogout
+    data-test="google-logout-button"
     className="logout-btn"
     clientId={process.env.REACT_APP_CLIENT_ID}
     buttonText="Logout"
-    onLogoutSuccess={logout}
+    onLogoutSuccess={props.logout}
    >
    </GoogleLogout>
   </div>
@@ -24,13 +19,7 @@ const LogoutButton = (props) => {
 };
 
 LogoutButton.propTypes = {
- onLogOutUser: PropTypes.func.isRequired
+ logout: PropTypes.func
 };
 
-const mapDispatchToProps = (dispatch) => {
- return {
-  onLogOutUser: () => dispatch(action.logOutUser())
- }
-}
-
-export default connect(null, mapDispatchToProps)(LogoutButton);
+export default LogoutButton;
