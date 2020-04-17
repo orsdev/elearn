@@ -122,6 +122,90 @@
   color: white !important;
 }
 
+.courses {
+  margin-top: 30px;
+  width: 100%;
+  background: white;
+}
+.courses h2 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 2.9rem;
+  padding: 10px;
+  position: relative;
+  background-color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.courses h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: white;
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+}
+.courses .courses-body {
+  min-height: 150px;
+  max-height: 100%;
+  width: 100%;
+  background: white;
+  box-shadow: 0 8px 6px -6px black;
+  padding: 10px;
+  overflow-y: hidden;
+}
+.courses .courses-body h4 {
+  font-size: 1.5rem;
+  color: #777575;
+  width: 100%;
+  word-wrap: break-word;
+}
+.courses .courses-body p {
+  margin-top: 5px;
+  font-size: 1.5rem;
+  width: 100%;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+.courses-container {
+  padding: 5px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  gap: 20px;
+  column-gap: 20px;
+  justify-content: center;
+}
+.courses-item iframe {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.courses .courses-btn {
+  width: 100%;
+  text-align: center;
+}
+.courses .courses-btn .all-courses {
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #2441e7;
+  background-color: #ffffff;
+  border-radius: 50px 50px 50px 50px;
+  padding: 15px 60px 15px 60px;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: #2441e7;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.courses .courses-btn .all-courses:hover, .courses .courses-btn .all-courses:focus {
+  background: #2441e7;
+  color: white;
+}
+
 @media (min-width: 0) and (max-width: 840px) {
   .hero-body {
     width: 99%;
@@ -142,6 +226,11 @@
   .header-auth {
     width: 150px;
     text-align: right;
+  }
+}
+@media (max-width: 630px) {
+  .courses-container {
+    grid-template-columns: 1fr !important;
   }
 }
 @media (max-width: 520px) {

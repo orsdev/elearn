@@ -28,6 +28,14 @@
   }
 }
 
+@media (max-width: 630px) {
+  .courses {
+    &-container {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}
+
 @media (max-width: 520px) {
   .hero {
     &-body {
