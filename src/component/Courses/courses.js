@@ -46,7 +46,9 @@ const Courses = (props) => {
  }
 
  return (
-  <div className="courses">
+  <div
+   className="courses"
+   data-test="courses">
    <h2> Courses </h2>
    <div className="courses-container">
     {playlist}
