@@ -1,0 +1,37 @@
+.loginNotification {
+  width: 98%;
+  position: relative;
+  text-align: center;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  h1 {
+    position: absolute;
+    font-size: 2.6rem;
+    color: black;
+    width: 100%;
+    padding: 20px;
+    animation: backAndForth 2s ease infinite alternate;
+    -webkit-animation: backAndForth 2s ease infinite alternate;
+  }
+}
+
+@keyframes backAndForth {
+  from {
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+  }
+  to {
+    transform: translateX(5%);
+    -webkit-transform: translateX(5%);
+    -moz-transform: translateX(5%);
+    -ms-transform: translateX(5%);
+    -o-transform: translateX(5%);
+  }
+}
