@@ -9,10 +9,11 @@ describe('action testing', () => {
 
    const user = {
     type: types.LOGIN_USER,
-    user: {}
+    user: {},
+    auth: true
    }
 
-   const action = actions.logInUser({});
+   const action = actions.logInUser({}, true);
    expect(action).toEqual(user);
   });
 
