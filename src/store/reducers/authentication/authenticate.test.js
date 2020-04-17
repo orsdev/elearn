@@ -25,7 +25,8 @@ describe('Authenticate reducer', () => {
 
   const newState = {
    type: types.LOGIN_USER,
-   user: user.user
+   user: user.user,
+   auth: user.auth
   }
 
   const authenticate = Authenticate(user, newState);

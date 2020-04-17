@@ -10,7 +10,7 @@ const authenticate = (state = initialState, action) => {
   case types.LOGIN_USER:
    return {
     ...state,
-    auth: true,
+    auth: action.auth,
     user: action.user
    };
   case types.LOGOUT_USER:
