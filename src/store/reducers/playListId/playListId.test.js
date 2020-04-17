@@ -10,12 +10,12 @@ describe('playListId reducer', () => {
 
  test('Should return new state if action.type( PLAYLIST_ID) is provided', () => {
 
-  const newState = {
+  const state = {
    type: types.PLAYLIST_ID,
    id: 'id'
   }
 
-  const playListId = PlayListId(null, newState);
+  const playListId = PlayListId(null, state);
   expect(playListId).toEqual('id');
  });
 

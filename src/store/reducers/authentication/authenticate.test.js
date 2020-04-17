@@ -11,7 +11,7 @@ describe('Authenticate reducer', () => {
 
  test('Should return new state if action.type(LOGIN_USER) is provided', () => {
 
-  const user = {
+  const state = {
    user: {
     googleId: "",
     imageUrl: "",
@@ -23,29 +23,29 @@ describe('Authenticate reducer', () => {
    auth: true
   }
 
-  const newState = {
+  const action = {
    type: types.LOGIN_USER,
-   user: user.user,
-   auth: user.auth
+   user: state.user,
+   auth: state.auth
   }
 
-  const authenticate = Authenticate(user, newState);
-  expect(authenticate).toEqual(user);
+  const authenticate = Authenticate(state, action);
+  expect(authenticate).toEqual(state);
  });
 
  test('Should return new state if action.type(LOGOUT_USER) is provided', () => {
 
-  const user = {
+  const state = {
    user: null,
    auth: false
   }
 
-  const newState = {
+  const action = {
    type: types.LOGOUT_USER
   }
 
-  const authenticate = Authenticate(user, newState);
-  expect(authenticate).toEqual(user);
+  const authenticate = Authenticate(state, action);
+  expect(authenticate).toEqual(state);
  });
 
 });
