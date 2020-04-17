@@ -2,6 +2,7 @@ import React, { useEffect, Fragment } from 'react';
 import * as action from '../../store/action';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import LoginNotification from '../loginNotification/loginNotification';
 
 const Courses = (props) => {
 
@@ -50,6 +51,7 @@ const Courses = (props) => {
    className="courses"
    data-test="courses">
    <h2> Courses </h2>
+   {!auth ? <LoginNotification /> : null}
    <div className="courses-container">
     {playlist}
    </div>
