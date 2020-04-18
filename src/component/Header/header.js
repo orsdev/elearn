@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import LogoutButton from '../Button/logoutButton/logoutButton';
 
 const Header = (props) => {
@@ -42,7 +43,13 @@ const Header = (props) => {
    data-test="header-component">
    <nav
     className="header-nav">
-    <a href="#" data-test="elearn-logo" className="header-logo"><span className="first-letter">E</span>Learn</a>
+    <NavLink
+     to="/"
+     data-test="elearn-logo"
+     activeClassName="header-logo">
+     <span className="first-letter">E</span>
+     Learn
+     </NavLink>
     {auth}
    </nav>
   </div>
