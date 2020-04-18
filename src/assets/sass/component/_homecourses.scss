@@ -1,0 +1,58 @@
+.home-courses {
+  margin-top: 30px;
+  width: 100%;
+  background: white;
+
+  h2 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.9rem;
+    padding: 10px;
+    position: relative;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  h2::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: white;
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+  }
+
+  &-container {
+    padding: 5px;
+    height: 100%;
+  }
+
+  .btn-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+[data-btn="home-courses-btn"] {
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #2441e7;
+  background-color: #ffffff;
+  border-radius: 50px 50px 50px 50px;
+  padding: 15px 60px 15px 60px;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: #2441e7;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover,
+  &:focus {
+    background: #2441e7;
+    color: white;
+  }
+}
