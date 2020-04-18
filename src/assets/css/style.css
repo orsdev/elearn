@@ -10,10 +10,11 @@
   align-items: center;
 }
 .header-logo {
+  @import url("https://font.googleapis.com/css2?family=Pacifico&display=swap");
+  font-family: "Pacifico", cursive;
   display: inline-block;
   width: calc(100% - 220px);
   font-size: 2.4rem;
-  font-family: cursive;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.562);
 }
@@ -47,6 +48,33 @@
   padding: 15px 10px;
 }
 
+.first-letter {
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  animation: pulse 1s linear infinite;
+  -webkit-animation: pulse 1s linear infinite;
+}
+
+@-webkit-keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes pulse {
+  25% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
 .hero {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/bg-hero.jpg);
   position: relative;

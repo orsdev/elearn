@@ -42,7 +42,7 @@ const Header = (props) => {
    data-test="header-component">
    <nav
     className="header-nav">
-    <a href="#" data-test="udemy-clone-logo" className="header-logo">Udemy Clone</a>
+    <a href="#" data-test="elearn-logo" className="header-logo"><span className="first-letter">E</span>Learn</a>
     {auth}
    </nav>
   </div>

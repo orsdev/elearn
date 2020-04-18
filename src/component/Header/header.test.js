@@ -18,7 +18,7 @@ describe('Header Component', () => {
 
  test('Should render a Logo', () => {
   let wrapper = setUp(undefined);
-  const logo = findByAttr(wrapper, 'udemy-clone-logo');
+  const logo = findByAttr(wrapper, 'elearn-logo');
   expect(logo.length).toBe(1);
  });
 
