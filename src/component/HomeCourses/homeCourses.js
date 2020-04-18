@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoginNotification from '../loginNotification/loginNotification';
 
-const Courses = (props) => {
+const HomeCourses = (props) => {
 
  const { auth, id } = props;
  const { onGetPlayListId, onGetPlayListItems, onRemovePlayList } = props;
@@ -75,12 +75,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
  return {
   onGetPlayListId: () => dispatch(action.getPlaylistId()),
-  onGetPlayListItems: (id) => dispatch(action.getPlaylistItems(id)),
+  onGetPlayListItems: (id, max) => dispatch(action.getPlaylistItems(id, max)),
   onRemovePlayList: () => dispatch(action.removePlaylist()),
  }
 }
 
-Courses.propTypes = {
+HomeCourses.propTypes = {
  auth: PropTypes.bool,
  id: PropTypes.string,
  playlist: PropTypes.array,
@@ -89,4 +89,4 @@ Courses.propTypes = {
  onRemovePlayList: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Courses);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeCourses);

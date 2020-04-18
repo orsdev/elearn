@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as action from '../../store/action';
 import Header from '../../component/Header/header';
 import Hero from '../../component/Hero/hero';
-import Courses from '../../component/Courses/courses';
+import HomeCourses from '../../component/HomeCourses/homeCourses';
 
 
 class Elearn extends Component {
@@ -36,7 +36,7 @@ class Elearn extends Component {
      responseGoogle={this.responseGoogle}
      auth={this.props.auth}
     />
-    <Courses />
+    <HomeCourses />
    </Fragment >
   );
  }

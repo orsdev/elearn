@@ -1,11 +1,11 @@
 import React from 'react';
-import Courses from './courses';
+import HomeCourses from './homeCourses';
 import { shallow } from 'enzyme';
 import { findByAttr, storeFactory, checkProps } from '../../test/utils';
 
 const setUp = (props = {}) => {
  const store = storeFactory(undefined);
- const wrapper = shallow(<Courses store={store} />).dive().dive();
+ const wrapper = shallow(<HomeCourses store={store} />).dive().dive();
  return wrapper;
 };
 
@@ -25,7 +25,7 @@ describe('Courses Component', () => {
    playlist: []
   };
 
-  checkProps(Courses, expectedProps);
+  checkProps(HomeCourses, expectedProps);
  });
 
 });
