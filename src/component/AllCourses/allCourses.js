@@ -77,4 +77,14 @@ const mapDispatchToProps = (dispatch) => {
  }
 }
 
+
+AllCourses.propTypes = {
+ auth: PropTypes.bool,
+ id: PropTypes.string,
+ playlist: PropTypes.object,
+ onGetPlayListId: PropTypes.func,
+ onGetPlayListItems: PropTypes.func,
+ onRemovePlayList: PropTypes.func,
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(AllCourses);
