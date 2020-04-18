@@ -60,3 +60,11 @@
     }
   }
 }
+
+@media (max-width: 280px) {
+  .first-letter {
+    display: inline;
+    animation: none;
+    -webkit-animation: none;
+  }
+}

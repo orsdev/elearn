@@ -359,6 +359,13 @@
     font-size: 2.2rem;
   }
 }
+@media (max-width: 280px) {
+  .first-letter {
+    display: inline;
+    animation: none;
+    -webkit-animation: none;
+  }
+}
 body {
   background-color: #101031;
 }
