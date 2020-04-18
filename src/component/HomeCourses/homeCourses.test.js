@@ -14,7 +14,7 @@ describe('Courses Component', () => {
 
  test('Should render without render', () => {
   const wrapper = setUp(null);
-  const component = findByAttr(wrapper, 'courses');
+  const component = findByAttr(wrapper, 'home-courses');
   expect(component.length).toBe(1);
  });
 

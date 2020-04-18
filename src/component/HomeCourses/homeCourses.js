@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import * as action from '../../store/action';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoginNotification from '../loginNotification/loginNotification';
 
@@ -27,15 +28,14 @@ const HomeCourses = (props) => {
 
  if (props.playlist !== null) {
   var playlist = props.playlist.map((item, index) => {
-   console.log(item)
    let videoId = item.snippet.resourceId.videoId;
    let title = item.snippet.title;
    let description = item.snippet.description;
 
    return (
     <Fragment key={index}>
-     <div className="courses-item" id={videoId}>
-      <iframe title={title} width="560" height="315" src={"https://www.youtube.com/embed/" + videoId} video="true" frameBorder={0} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+     <div className="grid-item" id={videoId}>
+      <iframe title={title} src={"https://www.youtube.com/embed/" + videoId} video="true" frameBorder={0} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       <div className="courses-body">
        <h4 className="courses-title">{title}</h4>
        <p className="courses-about">{description}</p>
@@ -48,16 +48,20 @@ const HomeCourses = (props) => {
 
  return (
   <div
-   className="courses"
-   data-test="courses">
+   className="home-courses"
+   data-test="home-courses">
    <h2> Courses </h2>
    {!auth ? <LoginNotification /> : null}
-   <div className="courses-container">
+   <div className="home-courses-container grid-container">
     {playlist}
    </div>
-   <div className="courses-btn">
+   <div className="btn-wrapper">
     {props.playlist ?
-     <a href="#" className="all-courses">View All Courses</a>
+     <NavLink
+      to="/all-courses"
+      data-btn="home-courses-btn">
+      View All Courses
+     </NavLink>
      : null}
    </div>
   </div>
