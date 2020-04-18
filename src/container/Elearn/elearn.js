@@ -1,27 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import * as action from '../../store/action';
 import Header from '../../component/Header/header';
-import Hero from '../../component/Hero/hero';
-import HomeCourses from '../../component/HomeCourses/homeCourses';
+import Home from '../../component/Home/home';
 
 
 class Elearn extends Component {
  constructor(props) {
   super(props);
   this.state = {};
- }
-
- //Google auth success function
- responseGoogle = (response) => {
-  if (response && !response.error) {
-   this.props.onLogInUser(response.profileObj, true);
-  }
- };
-
- //Google auth logout function
- logout = () => {
-  this.props.onLogOutUser();
  }
 
  render() {
@@ -32,11 +18,7 @@ class Elearn extends Component {
      fullname={this.props.auth ? this.props.user.name : null}
      logout={this.logout}
      auth={this.props.auth} />
-    <Hero
-     responseGoogle={this.responseGoogle}
-     auth={this.props.auth}
-    />
-    <HomeCourses />
+    <Home />
    </Fragment >
   );
  }
@@ -50,11 +32,4 @@ const mapStateToProps = (state) => {
  }
 };
 
-const mapDispatchToProps = (dispatch) => {
- return {
-  onLogInUser: (user, auth) => dispatch(action.logInUser(user, auth)),
-  onLogOutUser: () => dispatch(action.logOutUser())
- }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Elearn);
+export default connect(mapStateToProps, null)(Elearn);
