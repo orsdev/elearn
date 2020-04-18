@@ -13,12 +13,6 @@ const Home = (props) => {
   }
  };
 
- //Google auth logout function
- const logout = () => {
-  props.onLogOutUser();
- }
-
-
  return (
   <Fragment>
    <Hero
@@ -37,8 +31,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
  return {
-  onLogInUser: (user, auth) => dispatch(action.logInUser(user, auth)),
-  onLogOutUser: () => dispatch(action.logOutUser())
+  onLogInUser: (user, auth) => dispatch(action.logInUser(user, auth))
  }
 }
 
