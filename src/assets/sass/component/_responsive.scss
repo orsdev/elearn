@@ -28,11 +28,13 @@
   }
 }
 
-@media (max-width: 630px) {
-  .courses {
-    &-container {
-      grid-template-columns: 1fr !important;
-    }
+@media (max-width: 639px) {
+  .grid-container {
+    display: inline-block !important;
+  }
+
+  .grid-item:not(:last-child) {
+    margin-bottom: 35px;
   }
 }
 
