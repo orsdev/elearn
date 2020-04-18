@@ -27,7 +27,6 @@ const AllCourses = (props) => {
 
  if (props.playlist !== null) {
   var playlist = props.playlist.map((item, index) => {
-   console.log(item)
    let videoId = item.snippet.resourceId.videoId;
    let title = item.snippet.title;
    let description = item.snippet.description;
