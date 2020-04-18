@@ -10,7 +10,7 @@ const setUp = (props = {}) => {
 };
 
 
-describe('Courses Component', () => {
+describe('homeCourses Component', () => {
 
  test('Should render without render', () => {
   const wrapper = setUp(null);
