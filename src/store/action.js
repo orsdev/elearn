@@ -42,11 +42,11 @@ export const getPlaylistId = () => {
  }
 }
 
-export const getPlaylistItems = (id) => {
+export const getPlaylistItems = (id, max = 10) => {
  return async (dispatch) => {
   await youtube.get('/playlistItems', {
    params: {
-    maxResults: 10,
+    maxResults: max,
     part: 'snippet',
     playlistId: id,
     key: process.env.REACT_APP_YOUTUBE_API_KEY
