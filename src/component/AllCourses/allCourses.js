@@ -50,7 +50,9 @@ const AllCourses = (props) => {
  }
 
  return (
-  <div className="allCourses">
+  <div
+   data-test="all-courses"
+   className="allCourses">
    <h2>All Courses </h2>
    <div className="grid-container">
     {!auth ? <Redirect to="/" /> : null}
@@ -60,6 +62,14 @@ const AllCourses = (props) => {
  )
 };
 
+AllCourses.propTypes = {
+ auth: PropTypes.bool,
+ id: PropTypes.string,
+ playlist: PropTypes.object,
+ onGetPlayListId: PropTypes.func,
+ onGetPlayListItems: PropTypes.func,
+ onRemovePlayList: PropTypes.func,
+}
 
 const mapStateToProps = (state) => {
  return {
@@ -75,16 +85,6 @@ const mapDispatchToProps = (dispatch) => {
   onGetPlayListItems: (id, max) => dispatch(action.getPlaylistItems(id, max)),
   onRemovePlayList: () => dispatch(action.removePlaylist()),
  }
-}
-
-
-AllCourses.propTypes = {
- auth: PropTypes.bool,
- id: PropTypes.string,
- playlist: PropTypes.object,
- onGetPlayListId: PropTypes.func,
- onGetPlayListItems: PropTypes.func,
- onRemovePlayList: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllCourses);
