@@ -64,7 +64,7 @@ const AllCourses = (props) => {
 AllCourses.propTypes = {
  auth: PropTypes.bool,
  id: PropTypes.string,
- playlist: PropTypes.object,
+ playlist: PropTypes.array,
  onGetPlayListId: PropTypes.func,
  onGetPlayListItems: PropTypes.func,
  onRemovePlayList: PropTypes.func,
