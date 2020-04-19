@@ -312,6 +312,25 @@
   word-wrap: break-word;
 }
 
+.footer {
+  padding: 40px 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.918);
+  background: #010f3e;
+}
+.footer small {
+  font-size: 1.3rem;
+  word-spacing: 1px;
+  opacity: 0.9;
+}
+.footer strong {
+  margin: 0 5px;
+  @import url("https://font.googleapis.com/css2?family=Pacifico&display=swap");
+  font-family: "Pacifico", cursive;
+  letter-spacing: 5px;
+  color: #ffec44;
+}
+
 @media (min-width: 0) and (max-width: 840px) {
   .hero-body {
     width: 99%;

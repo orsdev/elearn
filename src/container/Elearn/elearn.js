@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../../component/Header/header';
 import Home from '../../component/Home/home';
 import AllCourses from '../../component/AllCourses/allCourses';
-
+import Footer from '../../component/Footer/footer';
 
 class Elearn extends Component {
  constructor(props) {
@@ -34,6 +34,7 @@ class Elearn extends Component {
      logout={this.logout}
      auth={this.props.auth} />
     {route}
+    <Footer />
    </Fragment >
   );
  }
