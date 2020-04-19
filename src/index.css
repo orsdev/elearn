@@ -9,6 +9,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
@@ -17,4 +18,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
+  position: relative;
+  height: 100%;
+  background-color: rgb(16, 16, 49);
 }

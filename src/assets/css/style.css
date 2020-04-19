@@ -265,11 +265,20 @@
 }
 
 .fav-icon {
+  position: absolute;
+  bottom: 5px;
   padding: 10px;
   margin-top: 8px;
 }
 .fav-icon i {
   font-size: 2.2rem;
+  cursor: pointer;
+}
+.fav-icon .fa-heart {
+  color: #ffe502;
+}
+.fav-icon .fa-heart-o {
+  color: black;
 }
 
 .grid-container {
@@ -297,6 +306,7 @@
   box-shadow: 0 8px 12px -6px black;
   padding: 10px;
   overflow-y: hidden;
+  position: relative;
 }
 .courses-body h4 {
   font-size: 1.5rem;
@@ -317,6 +327,10 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.918);
   background: #010f3e;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-top: 50px;
 }
 .footer small {
   font-size: 1.3rem;
@@ -384,9 +398,6 @@
     animation: none;
     -webkit-animation: none;
   }
-}
-body {
-  background-color: #101031;
 }
 
 /*# sourceMappingURL=style.css.map */
