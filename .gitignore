@@ -26,3 +26,4 @@ yarn-error.log*
 
 debug.log
 .env-cmdrc
+*.env-cmdrc
