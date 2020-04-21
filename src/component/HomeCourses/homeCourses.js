@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import * as action from '../../store/action';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoginNotification from '../loginNotification/loginNotification';
 
@@ -39,6 +38,10 @@ const HomeCourses = (props) => {
       <div className="courses-body">
        <h4 className="courses-title">{title}</h4>
        <p className="courses-about">{description}</p>
+       <div className="fav-icon">
+        <i className="fa fa-heart-o" data-fav="add-fav" id={videoId} aria-hidden="true"></i>
+        <i className="fa fa-heart" data-fav="add-fav" id={videoId} aria-hidden="true"></i>
+       </div>
       </div>
      </div>
     </Fragment>
@@ -55,15 +58,6 @@ const HomeCourses = (props) => {
    <div className="home-courses-container grid-container">
     {playlist}
    </div>
-   <div className="btn-wrapper">
-    {props.playlist ?
-     <NavLink
-      to="/all-courses"
-      data-btn="home-courses-btn">
-      View All Courses
-     </NavLink>
-     : null}
-   </div>
   </div>
  );
 }
@@ -79,7 +73,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
  return {
   onGetPlayListId: () => dispatch(action.getPlaylistId()),
-  onGetPlayListItems: (id, max) => dispatch(action.getPlaylistItems(id, max)),
+  onGetPlayListItems: (id) => dispatch(action.getPlaylistItems(id)),
   onRemovePlayList: () => dispatch(action.removePlaylist()),
  }
 }
