@@ -1,5 +1,6 @@
 import { types } from './types';
 import youtube from '../api/youtube';
+import jsonServer from '../api/jsonServer';
 
 export const logInUser = (user, auth) => {
  return {
@@ -42,11 +43,10 @@ export const getPlaylistId = () => {
  }
 }
 
-export const getPlaylistItems = (id, max = 10) => {
+export const getPlaylistItems = (id) => {
  return async (dispatch) => {
   await youtube.get('/playlistItems', {
    params: {
-    maxResults: max,
     part: 'snippet',
     playlistId: id,
     key: process.env.REACT_APP_YOUTUBE_API_KEY
@@ -60,6 +60,18 @@ export const getPlaylistItems = (id, max = 10) => {
     })
    }).catch(function (error) {
     console.log('playlist items not retrieved', error)
+   })
+ }
+}
+
+export const getUsers = (query) => {
+ return async (dispatch) => {
+  await jsonServer.get(`/${query}`)
+   .then(function (response) {
+    dispatch({
+     type: types.USERS_DATA,
+     data: response.data
+    })
    })
  }
 }

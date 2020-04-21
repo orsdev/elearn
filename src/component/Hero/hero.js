@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LoginButton from '../Button/loginButton/logInButton';
 
 const Hero = (props) => {
@@ -15,18 +14,11 @@ const Hero = (props) => {
     <p>
      Learn from professional intructors. It’s easy to learn a new skill, and even easier to get started.
      </p>
-    <LoginButton
-     responseGoogle={props.responseGoogle}
-     auth={props.auth} />
+    <LoginButton />
    </div>
 
   </div>
  )
 };
-
-Hero.propTypes = {
- auth: PropTypes.bool,
- responseGoogle: PropTypes.func
-}
 
 export default Hero;
