@@ -178,30 +178,6 @@
   padding: 5px;
   height: 100%;
 }
-.home-courses .btn-wrapper {
-  width: 100%;
-  text-align: center;
-}
-
-[data-btn=home-courses-btn] {
-  display: inline-block;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: #2441e7;
-  background-color: #ffffff;
-  border-radius: 50px 50px 50px 50px;
-  padding: 15px 60px 15px 60px;
-  border-style: solid;
-  border-width: 2px 2px 2px 2px;
-  border-color: #2441e7;
-  font-size: 1.5rem;
-  text-decoration: none;
-  font-weight: bold;
-}
-[data-btn=home-courses-btn]:hover, [data-btn=home-courses-btn]:focus {
-  background: #2441e7;
-  color: white;
-}
 
 .loginNotification {
   width: 98%;
@@ -239,48 +215,6 @@
     -o-transform: translateX(5%);
   }
 }
-.allCourses {
-  background: white;
-  padding: 10px;
-  width: 100%;
-}
-.allCourses h2 {
-  color: white;
-  margin-bottom: 30px;
-  font-size: 2.9rem;
-  padding: 10px;
-  position: relative;
-  background-color: black;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.allCourses h2::after {
-  content: "";
-  width: 100px;
-  height: 3px;
-  background: white;
-  position: absolute;
-  bottom: 15px;
-  left: 10px;
-}
-
-.fav-icon {
-  position: absolute;
-  bottom: 5px;
-  padding: 10px;
-  margin-top: 8px;
-}
-.fav-icon i {
-  font-size: 2.2rem;
-  cursor: pointer;
-}
-.fav-icon .fa-heart {
-  color: #ffe502;
-}
-.fav-icon .fa-heart-o {
-  color: black;
-}
-
 .grid-container {
   display: grid;
   width: 100%;
@@ -320,6 +254,23 @@
   width: 100%;
   font-weight: bold;
   word-wrap: break-word;
+}
+
+.fav-icon {
+  position: absolute;
+  bottom: 5px;
+  padding: 10px;
+  margin-top: 8px;
+}
+.fav-icon i {
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+.fav-icon .fa-heart {
+  color: #ffe502;
+}
+.fav-icon .fa-heart-o {
+  color: black;
 }
 
 .footer {

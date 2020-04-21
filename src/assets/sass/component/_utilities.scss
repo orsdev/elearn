@@ -44,3 +44,23 @@
     word-wrap: break-word;
   }
 }
+
+.fav-icon {
+  position: absolute;
+  bottom: 5px;
+  padding: 10px;
+  margin-top: 8px;
+
+  i {
+    font-size: 2.2rem;
+    cursor: pointer;
+  }
+
+  .fa-heart {
+    color: darken($yellow, 13%);
+  }
+
+  .fa-heart-o {
+    color: black;
+  }
+}
