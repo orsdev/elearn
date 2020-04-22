@@ -1,11 +1,12 @@
 import React from 'react';
 import LoginButton from './logInButton';
 import { shallow } from 'enzyme';
-import { findByAttr, checkProps } from '../../../test/utils';
+import { findByAttr, checkProps, storeFactory } from '../../../test/utils';
 
 
-const setUp = (props = {}) => {
- const wrapper = shallow(<LoginButton {...props} />);
+const setUp = (initialState) => {
+ const store = storeFactory(initialState);
+ const wrapper = shallow(<LoginButton store={store} />).dive().dive();
  return wrapper;
 };
 
@@ -17,16 +18,12 @@ describe('loginButton Component', () => {
   expect(component.length).toBe(1);
  });
 
- test('Should render Google login button', () => {
-  let wrapper = setUp({ auth: false });
-  const component = findByAttr(wrapper, 'google-login-button');
-  expect(component.length).toBe(1);
- });
-
  test('does not throw warning with expected props', () => {
   const expectedProps = {
-   responseGoogle: () => { },
-   auth: false
+   onLogInUser: () => { },
+   onGetUser: () => { },
+   loggedIn: false,
+   userData: {}
   };
 
   checkProps(LoginButton, expectedProps);
