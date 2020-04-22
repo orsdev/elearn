@@ -8,7 +8,7 @@ import jsonServer from '../../../api/jsonServer';
 const LoginButton = (props) => {
 
  useEffect(() => {
- }, [props.loggedIn, props.userData]);
+ }, [props.loggedIn, props.users.success, props.userData]);
 
  //Google auth success function
  const responseGoogle = (response) => {
@@ -23,6 +23,18 @@ const LoginButton = (props) => {
   }
  };
 
+ //save new users details in json-server
+ if (props.users.success && props.users.user.length === 0) {
+  const data = {
+   id: props.userData.email,
+   name: props.userData.name,
+   starred: []
+  };
+  //save user data to json-server database
+  jsonServer.post('/students', data);
+ }
+
+
 
  if (!props.loggedIn) {
   var button = (
@@ -30,7 +42,7 @@ const LoginButton = (props) => {
     data-test="google-login-button"
     className="login-btn"
     clientId={process.env.REACT_APP_CLIENT_ID}
-    buttonText="Log in with Google"
+    buttonText={props.text}
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     isSignedIn={true}
