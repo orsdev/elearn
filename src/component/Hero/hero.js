@@ -14,7 +14,7 @@ const Hero = (props) => {
     <p>
      Learn from professional intructors. It’s easy to learn a new skill, and even easier to get started.
      </p>
-    <LoginButton />
+    <LoginButton text="Student Login" />
    </div>
 
   </div>
