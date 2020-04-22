@@ -1,8 +1,8 @@
 import { types } from "../../types"
 
 const initialState = {
- user: null,
- auth: false
+ userData: null,
+ loggedIn: false
 }
 
 const authenticate = (state = initialState, action) => {
@@ -10,14 +10,14 @@ const authenticate = (state = initialState, action) => {
   case types.LOGIN_USER:
    return {
     ...state,
-    auth: action.auth,
-    user: action.user
+    loggedIn: action.loggedIn,
+    userData: action.userData
    };
   case types.LOGOUT_USER:
    return {
     ...state,
-    auth: false,
-    user: null
+    loggedIn: false,
+    userData: null
    }
   default:
    return state;

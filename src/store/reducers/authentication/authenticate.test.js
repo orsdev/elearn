@@ -12,7 +12,7 @@ describe('Authenticate reducer', () => {
  test('Should return new state if action.type(LOGIN_USER) is provided', () => {
 
   const state = {
-   user: {
+   userData: {
     googleId: "",
     imageUrl: "",
     email: "",
@@ -20,13 +20,13 @@ describe('Authenticate reducer', () => {
     givenName: "",
     familyName: ""
    },
-   auth: true
+   loggedIn: true
   }
 
   const action = {
    type: types.LOGIN_USER,
-   user: state.user,
-   auth: state.auth
+   userData: state.userData,
+   loggedIn: state.loggedIn
   }
 
   const authenticate = Authenticate(state, action);
@@ -36,8 +36,8 @@ describe('Authenticate reducer', () => {
  test('Should return new state if action.type(LOGOUT_USER) is provided', () => {
 
   const state = {
-   user: null,
-   auth: false
+   userData: null,
+   loggedIn: false
   }
 
   const action = {
