@@ -9,8 +9,8 @@ describe('action testing', () => {
 
    const user = {
     type: types.LOGIN_USER,
-    user: {},
-    auth: true
+    userData: {},
+    loggedIn: true
    }
 
    const action = actions.logInUser({}, true);

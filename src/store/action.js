@@ -2,11 +2,11 @@ import { types } from './types';
 import youtube from '../api/youtube';
 import jsonServer from '../api/jsonServer';
 
-export const logInUser = (user, auth) => {
+export const logInUser = (userData, loggedIn) => {
  return {
   type: types.LOGIN_USER,
-  user: user,
-  auth: auth
+  userData: userData,
+  loggedIn: loggedIn
  }
 };
 
@@ -70,7 +70,8 @@ export const getUsers = (query) => {
    .then(function (response) {
     dispatch({
      type: types.USERS_DATA,
-     data: response.data
+     data: response.data,
+     success: true
     })
    })
  }
