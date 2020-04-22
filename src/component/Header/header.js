@@ -8,14 +8,14 @@ const Header = (props) => {
  const [dropdown, setDropdown] = useState(false);
 
  useEffect(() => {
- }, [props.auth]);
+ }, [props.loggedIn]);
 
  const toggleDropdown = () => {
   let toggleBool = !dropdown;
   setDropdown(toggleBool);
  }
 
- if (props.auth) {
+ if (props.loggedIn) {
   var auth = (
    <div
     data-test="header-auth"
@@ -28,8 +28,7 @@ const Header = (props) => {
      <ul className="header-dropdown">
       <li>{props.fullname}</li>
       <li>
-       <LogoutButton
-        logout={props.logout} />
+       <LogoutButton />
       </li>
      </ul>
      : null}
@@ -57,8 +56,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
- auth: PropTypes.bool,
- logout: PropTypes.func
+ loggedIn: PropTypes.bool
 };
 
 export default Header;

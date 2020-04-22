@@ -22,14 +22,14 @@ describe('Header Component', () => {
   expect(logo.length).toBe(1);
  });
 
- test('Should render a Header-auth if props(auth) is true', () => {
-  let wrapper = setUp({ auth: true });
+ test('Should render a Header-auth if props(loggedIn) is true', () => {
+  let wrapper = setUp({ loggedIn: true });
   const logo = findByAttr(wrapper, 'header-auth');
   expect(logo.length).toBe(1);
  });
 
  test('does not throw warning with expected props', () => {
-  const expectedProps = { auth: false, logout: () => { } };
+  const expectedProps = { loggedIn: false };
   checkProps(Header, expectedProps);
  });
 
