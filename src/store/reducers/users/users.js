@@ -1,9 +1,13 @@
 import { types } from '../../types';
 
-const users = (state = null, action) => {
+const users = (state = { user: [], success: false }, action) => {
  switch (action.type) {
   case types.USERS_DATA:
-   return action.data;
+   return {
+    ...state,
+    user: action.data,
+    success: action.success
+   };
   default:
    return state;
  }
