@@ -1,32 +1,34 @@
 import React from 'react';
-import LoginButton from './logInButton';
+import StudentLogin from './studentLogin';
 import { shallow } from 'enzyme';
 import { findByAttr, checkProps, storeFactory } from '../../../test/utils';
 
 
 const setUp = (initialState) => {
  const store = storeFactory(initialState);
- const wrapper = shallow(<LoginButton store={store} />).dive().dive();
+ const wrapper = shallow(<StudentLogin store={store} />).dive().dive();
  return wrapper;
 };
 
-describe('loginButton Component', () => {
+describe('Student Login Button Component', () => {
 
  test('Should render without error', () => {
   let wrapper = setUp(undefined);
-  const component = findByAttr(wrapper, 'loginButton-component');
+  const component = findByAttr(wrapper, 'studentLogin-component');
   expect(component.length).toBe(1);
  });
 
  test('does not throw warning with expected props', () => {
   const expectedProps = {
-   onLogInUser: () => { },
+   onStudentLogin: () => { },
    onGetUser: () => { },
-   loggedIn: false,
-   userData: {}
+   studentAuth: false,
+   instructorAuth: false,
+   studentData: {},
+   users: {}
   };
 
-  checkProps(LoginButton, expectedProps);
+  checkProps(StudentLogin, expectedProps);
  });
 
 });
