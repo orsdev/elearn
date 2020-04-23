@@ -3,6 +3,7 @@ import * as action from '../../store/action';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import LoginNotification from '../loginNotification/loginNotification';
+import Spinner from '../Spinner/spinner';
 import jsonServer from '../../api/jsonServer';
 
 class HomeCourses extends Component {
@@ -104,8 +105,11 @@ class HomeCourses extends Component {
      </Fragment>
     )
    })
+  } else {
+   playlist = (
+    <Spinner />
+   )
   }
-
 
   return (
    <div
