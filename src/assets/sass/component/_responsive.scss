@@ -61,6 +61,16 @@
   }
 }
 
+@media (max-width: 520px) {
+  .button-wrapper {
+    display: inline-block;
+  }
+
+  .login-btn {
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 280px) {
   .first-letter {
     display: inline;

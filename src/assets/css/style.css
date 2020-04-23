@@ -109,6 +109,13 @@
   letter-spacing: 0.3px;
 }
 
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .login-btn {
   display: flex;
   align-items: center;
@@ -118,6 +125,7 @@
   padding: 7px 20px;
   font-size: 1.7rem !important;
   opacity: 1 !important;
+  margin-right: 20px;
   border: 2px solid white !important;
 }
 .login-btn:hover, .login-btn:focus {
@@ -452,6 +460,15 @@
 
   .loginNotification h1 {
     font-size: 2.2rem;
+  }
+}
+@media (max-width: 520px) {
+  .button-wrapper {
+    display: inline-block;
+  }
+
+  .login-btn {
+    margin-right: 0;
   }
 }
 @media (max-width: 280px) {
