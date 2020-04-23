@@ -3,29 +3,44 @@ import { types } from './types';
 
 describe('action testing', () => {
 
- describe('Authenticate action', () => {
+ describe('studentLogIn action', () => {
 
-  test('logInUser action should return object', () => {
-
-   const user = {
-    type: types.LOGIN_USER,
-    userData: {},
-    loggedIn: true
-   }
-
-   const action = actions.logInUser({}, true);
-   expect(action).toEqual(user);
-  });
-
-  test('logOutUser action should return object', () => {
+  test('studentLogIn action should return object', () => {
 
    const user = {
-    type: types.LOGOUT_USER,
+    type: types.STUDENT_LOGIN,
+    studentData: {},
+    studentAuth: true
    }
 
-   const action = actions.logOutUser();
+   const action = actions.studentLogIn({}, true);
    expect(action).toEqual(user);
   });
-
  });
+
+ describe('instructorLogIn action', () => {
+
+  test('instructorLogIn action should return object', () => {
+
+   const user = {
+    type: types.INSTRUCTOR_LOGIN,
+    instructorData: {},
+    instructorAuth: true
+   }
+
+   const action = actions.instructorLogIn({}, true);
+   expect(action).toEqual(user);
+  });
+ });
+
+ test('logOutUser action should return object', () => {
+
+  const user = {
+   type: types.LOGOUT_USER,
+  }
+
+  const action = actions.logOutUser();
+  expect(action).toEqual(user);
+ });
+
 });

@@ -2,11 +2,19 @@ import { types } from './types';
 import youtube from '../api/youtube';
 import jsonServer from '../api/jsonServer';
 
-export const logInUser = (userData, loggedIn) => {
+export const studentLogIn = (studentData, studentAuth) => {
  return {
-  type: types.LOGIN_USER,
-  userData: userData,
-  loggedIn: loggedIn
+  type: types.STUDENT_LOGIN,
+  studentData: studentData,
+  studentAuth: studentAuth
+ }
+};
+
+export const instructorLogIn = (instructorData, instructorAuth) => {
+ return {
+  type: types.INSTRUCTOR_LOGIN,
+  instructorData: instructorData,
+  instructorAuth: instructorAuth
  }
 };
 
