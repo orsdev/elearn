@@ -20,9 +20,15 @@ describe('homeCourses Component', () => {
 
  test('does not throw warning with expected props', () => {
   const expectedProps = {
-   auth: true,
+   studentAuth: true,
    id: '',
-   playlist: []
+   studentData: {},
+   users: {},
+   playlist: [],
+   onGetPlayListId: () => { },
+   onGetPlayListItems: () => { },
+   onRemovePlayList: () => { },
+   onGetUser: () => { }
   };
 
   checkProps(HomeCourses, expectedProps);

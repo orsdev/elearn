@@ -9,15 +9,15 @@ import jsonServer from '../../api/jsonServer';
 class HomeCourses extends Component {
 
  componentDidUpdate(prevProps, prevState) {
-  if (this.props.loggedIn !== prevProps.loggedIn) {
+  if (this.props.studentAuth !== prevProps.studentAuth) {
    this.props.onGetPlayListId();
   };
 
-  if (this.props.loggedIn && this.props.id !== prevProps.id) {
+  if (this.props.studentAuth && this.props.id !== prevProps.id) {
    this.props.onGetPlayListItems(this.props.id);
   };
 
-  if (!this.props.loggedIn) {
+  if (!this.props.studentAuth) {
    this.props.onRemovePlayList();
   };
 
@@ -29,7 +29,7 @@ class HomeCourses extends Component {
   let target = e.target;
   let id = target.id;
   let getAttribute = target.getAttribute('data-fav');
-  let { email } = this.props.userData;
+  let { email } = this.props.studentData;
 
   if (getAttribute === 'remove') {
 
@@ -116,7 +116,7 @@ class HomeCourses extends Component {
     className="home-courses"
     data-test="home-courses">
     <h2> Courses </h2>
-    {!this.props.loggedIn ? <LoginNotification /> :
+    {!this.props.studentAuth ? <LoginNotification /> :
      <div className="home-courses-container grid-container">
       {playlist}
      </div>
@@ -128,8 +128,8 @@ class HomeCourses extends Component {
 
 const mapStateToProps = (state) => {
  return {
-  loggedIn: state.authenticate.loggedIn,
-  userData: state.authenticate.userData,
+  studentAuth: state.studentAuthentication.studentAuth,
+  studentData: state.studentAuthentication.studentData,
   id: state.playListId,
   users: state.users,
   playlist: state.playListItems.playlist
@@ -146,12 +146,15 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 HomeCourses.propTypes = {
- loggedIn: PropTypes.bool,
+ studentAuth: PropTypes.bool,
+ studentData: PropTypes.object,
+ users: PropTypes.object,
  id: PropTypes.string,
  playlist: PropTypes.array,
  onGetPlayListId: PropTypes.func,
  onGetPlayListItems: PropTypes.func,
- onRemovePlayList: PropTypes.func
+ onRemovePlayList: PropTypes.func,
+ onGetUser: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeCourses);
