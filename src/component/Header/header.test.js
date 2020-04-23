@@ -1,10 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Header from './header';
-import { findByAttr, checkProps } from '../../test/utils';
+import { findByAttr, checkProps, storeFactory } from '../../test/utils';
 
-const setUp = (props) => {
- const component = shallow(<Header {...props} />);
+const setUp = (initialState) => {
+ const store = storeFactory(initialState)
+ const component = shallow(<Header store={store} />).dive().dive();
+ console.log(component.debug())
  return component;
 };
 
@@ -22,14 +24,14 @@ describe('Header Component', () => {
   expect(logo.length).toBe(1);
  });
 
- test('Should render a Header-auth if props(loggedIn) is true', () => {
-  let wrapper = setUp({ loggedIn: true });
-  const logo = findByAttr(wrapper, 'header-auth');
-  expect(logo.length).toBe(1);
- });
-
  test('does not throw warning with expected props', () => {
-  const expectedProps = { loggedIn: false };
+  const expectedProps = {
+   studentAuth: false,
+   instructorAuth: false,
+   studentData: {},
+   instructorData: {}
+  };
+
   checkProps(Header, expectedProps);
  });
 
