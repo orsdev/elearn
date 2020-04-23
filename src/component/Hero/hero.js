@@ -1,5 +1,6 @@
 import React from 'react';
-import LoginButton from '../Button/loginButton/logInButton';
+import StudentLogin from '../Button/loginButton/studentLogin';
+import InstructorLogin from '../Button/loginButton/instructorLogin';
 
 const Hero = (props) => {
 
@@ -14,10 +15,13 @@ const Hero = (props) => {
     <p>
      Learn from professional intructors. It’s easy to learn a new skill, and even easier to get started.
      </p>
-    <LoginButton text="Student Login" />
+    <div className="button-wrapper">
+     <StudentLogin />
+     <InstructorLogin />
+    </div>
    </div>
 
-  </div>
+  </div >
  )
 };
 
