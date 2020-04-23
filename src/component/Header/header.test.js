@@ -6,7 +6,6 @@ import { findByAttr, checkProps, storeFactory } from '../../test/utils';
 const setUp = (initialState) => {
  const store = storeFactory(initialState)
  const component = shallow(<Header store={store} />).dive().dive();
- console.log(component.debug())
  return component;
 };
 
