@@ -1,0 +1,30 @@
+{
+  "tutors": [
+    {
+      "id": "oluwadareysamuel@gmail.com",
+      "name": "Ogundare Samuel",
+      "videoId": [],
+      "starred": []
+    },
+    {
+      "id": "elearnlearn@gmail.com",
+      "name": "Elearn Elearn",
+      "videoId": [],
+      "starred": []
+    }
+  ],
+  "students": [
+    {
+      "id": "elearnlearn@gmail.com",
+      "name": "Elearn Elearn",
+      "starred": [
+        "KuXheoG10Ps"
+      ]
+    },
+    {
+      "id": "oluwadareysamuel@gmail.com",
+      "name": "Ogundare Samuel",
+      "starred": []
+    }
+  ]
+}
