@@ -25,10 +25,8 @@ describe('Header Component', () => {
 
  test('does not throw warning with expected props', () => {
   const expectedProps = {
-   studentAuth: false,
-   instructorAuth: false,
-   studentData: {},
-   instructorData: {}
+   auth: false,
+   authData: {}
   };
 
   checkProps(Header, expectedProps);

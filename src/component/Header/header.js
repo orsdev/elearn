@@ -8,26 +8,25 @@ const Header = (props) => {
  const [dropdown, setDropdown] = useState(false);
 
  useEffect(() => {
- }, [props.studentAuth, props.instructorAuth]);
+ }, [props.auth]);
 
  const toggleDropdown = () => {
   let toggleBool = !dropdown;
   setDropdown(toggleBool);
  }
 
- if (props.studentAuth) {
-  var auth;
-  auth = (
+ if (props.auth) {
+  var auth = (
    <div
     data-test="header-auth"
     className="header-auth">
     <img
      onClick={toggleDropdown}
-     src={props.studentData.imageUrl}
-     alt={props.studentData.name} />
+     src={props.authData.imageUrl}
+     alt={props.authData.name} />
     {dropdown ?
      <ul className="header-dropdown">
-      <li>{props.studentData.name}</li>
+      <li>{props.authData.name}</li>
       <li>
        <LogoutButton />
       </li>
@@ -35,27 +34,6 @@ const Header = (props) => {
      : null}
    </div>
   );
- } else {
-  if (props.instructorAuth) {
-   auth = (
-    <div
-     data-test="header-auth"
-     className="header-auth">
-     <img
-      onClick={toggleDropdown}
-      src={props.instructorData.imageUrl}
-      alt={props.instructorData.name} />
-     {dropdown ?
-      <ul className="header-dropdown">
-       <li>{props.instructorData.name}</li>
-       <li>
-        <LogoutButton />
-       </li>
-      </ul>
-      : null}
-    </div>
-   );
-  }
  }
 
  return (
@@ -77,18 +55,14 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
- studentAuth: PropTypes.bool,
- instructorAuth: PropTypes.bool,
- studentData: PropTypes.object,
- instructorData: PropTypes.object
+ auth: PropTypes.bool,
+ authData: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
  return {
-  studentAuth: state.studentAuthentication.studentAuth,
-  studentData: state.studentAuthentication.studentData,
-  instructorAuth: state.instructorAuthentication.instructorAuth,
-  instructorData: state.instructorAuthentication.instructorData,
+  auth: state.authentication.auth,
+  authData: state.authentication.authData,
  }
 };
 
