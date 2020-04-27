@@ -3,32 +3,17 @@ import { types } from './types';
 
 describe('action testing', () => {
 
- describe('studentLogIn action', () => {
+ describe('authenticate action', () => {
 
-  test('studentLogIn action should return object', () => {
-
-   const user = {
-    type: types.STUDENT_LOGIN,
-    studentData: {},
-    studentAuth: true
-   }
-
-   const action = actions.studentLogIn({}, true);
-   expect(action).toEqual(user);
-  });
- });
-
- describe('instructorLogIn action', () => {
-
-  test('instructorLogIn action should return object', () => {
+  test('should return object', () => {
 
    const user = {
-    type: types.INSTRUCTOR_LOGIN,
-    instructorData: {},
-    instructorAuth: true
+    type: types.LOGIN,
+    authData: {},
+    auth: true
    }
 
-   const action = actions.instructorLogIn({}, true);
+   const action = actions.authenticate({}, true);
    expect(action).toEqual(user);
   });
  });
