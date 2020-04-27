@@ -192,7 +192,7 @@
   height: 100%;
 }
 
-.loginNotification {
+.notification {
   width: 100%;
   position: relative;
   text-align: center;
@@ -203,7 +203,7 @@
   overflow: hidden;
   background: white;
 }
-.loginNotification h1 {
+.notification h1 {
   position: absolute;
   font-size: 2.6rem;
   width: 100%;
