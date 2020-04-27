@@ -2,7 +2,10 @@
   padding: 20px 30px;
   background-color: white;
   border-bottom: 4px groove #4cb1f7;
-  position: relative;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 }
 .header-nav {
   display: flex;
@@ -78,9 +81,10 @@
 .hero {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/bg-hero.jpg);
   position: relative;
+  top: 35px;
   z-index: 1;
   width: 100%;
-  height: 450px;
+  height: 500px;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -159,9 +163,10 @@
 }
 
 .home-courses {
-  margin-top: 30px;
+  margin-top: -40px;
   width: 100%;
   background: white;
+  position: relative;
 }
 .home-courses h2 {
   color: white;
@@ -170,7 +175,7 @@
   padding: 10px;
   position: relative;
   background-color: black;
-  padding-top: 20px;
+  padding-top: 90px;
   padding-bottom: 20px;
 }
 .home-courses h2::after {
@@ -188,7 +193,7 @@
 }
 
 .loginNotification {
-  width: 98%;
+  width: 100%;
   position: relative;
   text-align: center;
   height: 200px;
@@ -196,11 +201,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: white;
 }
 .loginNotification h1 {
   position: absolute;
   font-size: 2.6rem;
-  color: black;
   width: 100%;
   padding: 20px;
   animation: backAndForth 2s ease infinite alternate;
@@ -230,18 +235,20 @@
   gap: 20px;
   column-gap: 20px;
   justify-content: center;
+  background: white;
+  padding: 30px 3px;
 }
 .grid-item {
   width: 100% !important;
 }
-.grid-item iframe {
+.grid-item video {
   width: 100%;
-  height: 160px;
+  height: 190px;
   object-fit: cover;
 }
 
-.courses-body {
-  min-height: 150px;
+.course-body {
+  min-height: 200px;
   max-height: 100%;
   width: 100%;
   background: white;
@@ -250,18 +257,26 @@
   overflow-y: hidden;
   position: relative;
 }
-.courses-body h4 {
-  font-size: 1.5rem;
-  color: #777575;
+.course-body h4 {
+  font-size: 1.8rem;
+  color: black;
   width: 100%;
   word-wrap: break-word;
 }
-.courses-body p {
-  margin-top: 5px;
+.course-body p {
+  margin-top: 8px;
+  padding: 4px 2px;
   font-size: 1.5rem;
   width: 100%;
   font-weight: bold;
+  color: black;
   word-wrap: break-word;
+}
+.course-body .author-name {
+  position: absolute;
+  bottom: 8px;
+  width: 90%;
+  opacity: 0.7;
 }
 
 .fav-icon {
@@ -279,6 +294,34 @@
 }
 .fav-icon .fa-heart-o {
   color: black;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 25px;
+}
+
+.close {
+  margin-top: 20px;
+  border: 1px solid #044bd9;
+  padding: 8px 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: transparent;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  z-index: 10;
+}
+.close:hover {
+  background: #044bd9;
+  color: white;
 }
 
 .footer {
@@ -302,6 +345,92 @@
   font-family: "Pacifico", cursive;
   letter-spacing: 5px;
   color: #ffec44;
+}
+
+.dashboard {
+  background-color: white;
+  padding: 30px;
+  position: relative;
+  top: 85px;
+}
+.dashboard h1 {
+  font-size: 4.5rem;
+  width: 100%;
+  text-align: center;
+}
+.dashboard-nav {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  width: 80px;
+  align-items: center;
+}
+.dashboard-nav a {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #4cb1f7;
+  font-weight: 700;
+}
+.dashboard-nav i {
+  font-size: 1.6rem;
+  color: black;
+  margin-right: 7px;
+}
+
+.uploadForm {
+  margin-top: 30px;
+  padding: 30px 30px 0;
+  width: 100%;
+  background-color: #ecf1f5;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.form-group input,
+.form-group textarea {
+  color: #3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 5px -3px gainsboro;
+}
+.form-group textarea {
+  height: 150px;
+}
+
+.button-blue {
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor: pointer;
+  background-color: #0339a6;
+  color: white;
+  font-size: 24px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+.button-blue:hover {
+  background-color: white;
+  color: black;
+  outline: 4px solid #0339a6;
+}
+
+.video-label {
+  display: inline-block;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.6px;
 }
 
 .spinner-container {
@@ -415,6 +544,194 @@
     transform: rotate(360deg);
   }
 }
+.backdrop {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+  background-color: rgba(5, 68, 170, 0.55);
+}
+
+.uploadModal {
+  text-align: center;
+  width: 500px;
+  height: 360px;
+  background: white;
+  padding: 60px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.uploadModal h3 {
+  font-size: 2rem;
+  color: #302c2c;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  background-color: #4cb1f7;
+  width: 0;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.progress-bar {
+  width: 100%;
+  position: relative;
+  height: 20px;
+}
+
+.messageModal {
+  text-align: center;
+  width: 500px;
+  height: 190px;
+  background: white;
+  padding: 60px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.messageModal p {
+  font-size: 2rem;
+  width: 90%;
+}
+.messageModal .close {
+  margin-top: 20px;
+  border: 1px solid #044bd9;
+  padding: 8px 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: transparent;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  z-index: 10;
+}
+.messageModal .close:hover {
+  background: #044bd9;
+  color: white;
+}
+
+.banner {
+  height: 320px;
+  width: 100%;
+  position: relative;
+}
+.banner-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  object-fit: cover;
+}
+.banner-overlay {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.banner a {
+  z-index: 2;
+  padding: 10px 20px;
+  position: absolute;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -moz-transform: translate3d(-50%, -50%, 0);
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+.banner a:hover {
+  background: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.instructorPage {
+  height: 100%;
+  position: relative;
+  background: white;
+}
+.instructorPage-hero {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/instructor-bg.jpg);
+  position: relative;
+  top: 35px;
+  z-index: 1;
+  width: 100%;
+  height: 500px;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0 20px;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 87%, 0% 100%);
+  color: white;
+}
+.instructorPage-hero-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -moz-transform: translate3d(-50%, -50%, 0);
+}
+.instructorPage-hero-body h1 {
+  font-size: 4.5rem;
+  border-top: 4px groove #ffec44;
+}
+.instructorPage-main {
+  position: relative;
+}
+.instructorPage-main h2 {
+  color: black;
+  margin-top: -35px;
+  margin-bottom: 30px;
+  font-size: 2.9rem;
+  padding: 10px;
+  background-color: white;
+  padding-top: 90px;
+  padding-bottom: 20px;
+}
+.instructorPage a {
+  text-decoration: none;
+  margin-top: 20px;
+  background: transparent;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.7rem;
+  opacity: 1;
+  margin-right: 20px;
+  border: 2px solid white;
+}
+.instructorPage a:hover, .instructorPage a:focus {
+  background: #0339a6;
+  border: 2px solid #0339a6;
+  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+}
+
 @media (min-width: 0) and (max-width: 840px) {
   .hero-body {
     width: 99%;
@@ -461,8 +778,7 @@
   .loginNotification h1 {
     font-size: 2.2rem;
   }
-}
-@media (max-width: 520px) {
+
   .button-wrapper {
     display: inline-block;
   }

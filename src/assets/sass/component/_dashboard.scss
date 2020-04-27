@@ -1,0 +1,92 @@
+.dashboard {
+  background-color: white;
+  padding: 30px;
+  position: relative;
+  top: 85px;
+
+  h1 {
+    font-size: 4.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  &-nav {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    width: 80px;
+    align-items: center;
+
+    a {
+      font-size: 1.6rem;
+      text-decoration: none;
+      color: $color-4;
+      font-weight: 700;
+    }
+
+    i {
+      font-size: 1.6rem;
+      color: black;
+      margin-right: 7px;
+    }
+  }
+}
+
+.uploadForm {
+  margin-top: 30px;
+  padding: 30px 30px 0;
+  width: 100%;
+  background-color: #ecf1f5;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 30px;
+
+  input,
+  textarea {
+    color: #3c3c3c;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 54px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 4px 5px -3px gainsboro;
+  }
+
+  textarea {
+    height: 150px;
+  }
+}
+
+.button-blue {
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor: pointer;
+  background-color: $color-3;
+  color: white;
+  font-size: 24px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    outline: 4px solid $color-3;
+  }
+}
+
+.video-label {
+  display: inline-block;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.6px;
+}

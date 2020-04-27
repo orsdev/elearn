@@ -1,0 +1,35 @@
+.uploadModal {
+  text-align: center;
+  width: 500px;
+  height: 360px;
+  background: white;
+  padding: 60px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+
+  h3 {
+    font-size: 2rem;
+    color: rgb(48, 44, 44);
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.progress {
+  background-color: $color-4;
+  width: 0;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  &-bar {
+    width: 100%;
+    position: relative;
+    height: 20px;
+  }
+}
