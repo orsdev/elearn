@@ -1,25 +1,40 @@
 {
   "tutors": [
     {
-      "id": "oluwadareysamuel@gmail.com",
-      "name": "Ogundare Samuel",
-      "videoId": [],
-      "starred": []
-    },
-    {
       "id": "elearnlearn@gmail.com",
       "name": "Elearn Elearn",
-      "videoId": [],
-      "starred": []
+      "courses": [
+        {
+          "title": "Ikeja",
+          "description": "sdsskl jf jdfjj sfljjklwe slkdfjkjfek klsadfsajkjkldfkljklwe fjkljksdfksksdkfjkjkljjkljdf",
+          "url": "http://res.cloudinary.com/elearn/video/upload/v1587906485/hltlolhrs7u95wcnksxl.mp4",
+          "author": "Elearn Elearn"
+        },
+        {
+          "title": "Ikeja",
+          "description": "qwebrqw r wbersdsskl jf jdfjj sfljjklwe slkdfjkjfek klsadfsajkjkldfkljklwe fjkljksdfksksdkfjkjkljjkljdf",
+          "url": "http://res.cloudinary.com/elearn/video/upload/v1587906527/egpyyq9t9ols2z2gwepd.mp4",
+          "author": "Elearn Elearn"
+        },
+        {
+          "title": "Ikeja",
+          "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi mollitia sed incidunt sequi, sint nesciunt nobis laudantium velit minima recusandae voluptates numquam eius cumque quas labore aspernatur.",
+          "url": "http://res.cloudinary.com/elearn/video/upload/v1587977448/jpfhvlnvxa5bq2m2pcqa.mp4",
+          "author": "Elearn Elearn"
+        }
+      ]
+    },
+    {
+      "id": "oluwadareysamuel@gmail.com",
+      "name": "Ogundare Samuel",
+      "courses": []
     }
   ],
   "students": [
     {
       "id": "elearnlearn@gmail.com",
       "name": "Elearn Elearn",
-      "starred": [
-        "KuXheoG10Ps"
-      ]
+      "starred": []
     },
     {
       "id": "oluwadareysamuel@gmail.com",
