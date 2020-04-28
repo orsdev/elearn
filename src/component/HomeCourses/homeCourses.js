@@ -2,26 +2,57 @@ import React, { Component, Fragment } from 'react';
 import * as action from '../../store/action';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LoginNotification from '../loginNotification/loginNotification';
+import Notification from '../Notification/notification';
 import Spinner from '../Spinner/spinner';
 import jsonServer from '../../api/jsonServer';
 
 class HomeCourses extends Component {
 
+ state = {
+  emptyCourses: false,
+  courses: null
+ }
+
  componentDidUpdate(prevProps, prevState) {
-  if (this.props.studentAuth !== prevProps.studentAuth) {
-   this.props.onGetPlayListId();
-  };
+  /*
+  get all available course when user is authenticated
+  */
+  if (this.props.auth) {
+   if (this.props.auth !== prevProps.auth) {
+    this.props.onGetAllCourses();
+   }
+  }
 
-  if (this.props.studentAuth && this.props.id !== prevProps.id) {
-   this.props.onGetPlayListItems(this.props.id);
-  };
+  if (this.props.auth) {
+   if (this.props.allCourses !== prevProps.allCourses) {
 
-  if (!this.props.studentAuth) {
-   this.props.onRemovePlayList();
-  };
+    const { courses } = this.props.allCourses;
+
+    const extractCourses = courses.filter(function (value) {
+     return value.courses.length !== 0;
+    }).map(function (value) {
+     return [...value.courses];
+    });
+
+    /*
+    update state(courses) if course is found
+    and state(emptyCourses) if none is found
+    */
+    if (extractCourses.length !== 0) {
+     this.setState({
+      courses: extractCourses.flat()
+     })
+    } else {
+     this.setState({
+      emptyCourses: true
+     })
+    }
+
+   }
+  }
 
  }
+
 
  /* add and remove video 
  from favorite list function */
@@ -29,7 +60,7 @@ class HomeCourses extends Component {
   let target = e.target;
   let id = target.id;
   let getAttribute = target.getAttribute('data-fav');
-  let { email } = this.props.studentData;
+  let { email } = this.props.authData;
 
   if (getAttribute === 'remove') {
 
@@ -66,49 +97,52 @@ class HomeCourses extends Component {
 
  render() {
 
-  let playlist;
-  let className = "fa fa-heart-o";
+  let course;
   let dataAtrribute;
+  let favorite;
 
-  if (this.props.playlist !== null) {
-   playlist = this.props.playlist.map((item, index) => {
-    let videoId = item.snippet.resourceId.videoId;
-    let title = item.snippet.title;
-    let description = item.snippet.description;
+  if (this.props.auth && this.props.allCourses.isSuccessful) {
 
-    if (this.props.users.success && this.props.users.user.length) {
-     if (this.props.users.user[0].starred.includes(videoId)) {
-      className = "fa fa-heart";
-      dataAtrribute = "remove";
-     } else {
-      dataAtrribute = "add";
+   if (this.state.courses) {
+    course = this.state.courses.map((value, index) => {
+
+     if (this.props.users.success && this.props.users.user.length) {
+
+      //assign true of false if url is found
+      favorite = this.props.users.user[0].starred.includes(value.url);
+
+      if (favorite) {
+       dataAtrribute = "remove";
+      } else {
+       dataAtrribute = "add";
+      }
      }
-    }
 
-    return (
-     <Fragment key={index}>
-      <div className="grid-item" id={videoId}>
-       <iframe title={title} src={"https://www.youtube.com/embed/" + videoId} video="true" frameBorder={0} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-       <div className="courses-body">
-        <h4 className="courses-title">{title}</h4>
-        <p className="courses-about">{description}</p>
-        <div className="fav-icon">
-         <i
-          className={className}
-          data-fav={dataAtrribute}
-          id={videoId}
-          onClick={this.favoriteVideo}
-          aria-hidden="true"></i>
+     return (
+      <Fragment key={index}>
+       <div className="grid-item">
+        <video width="400" controls>
+         <source src={value.url} type="video/mp4" />
+      Your browser does not support HTML5 video.
+     </video>
+        <div className="course-body">
+         <h4 className="course-title">{value.title}</h4>
+         <p className="course-about">{value.description}</p>
+         <div className="course-body-footer">
+          <p className="course-author">{value.author}</p>
+          <i
+           onClick={this.favoriteVideo}
+           className={favorite ? "fa fa-heart" : "fa fa-heart-o"}
+           data-fav={dataAtrribute}
+           aria-hidden="true"
+           id={value.url}></i>
+         </div>
         </div>
        </div>
-      </div>
-     </Fragment>
-    )
-   })
-  } else {
-   playlist = (
-    <Spinner />
-   )
+      </Fragment>
+     )
+    })
+   }
   }
 
   return (
@@ -116,10 +150,27 @@ class HomeCourses extends Component {
     className="home-courses"
     data-test="home-courses">
     <h2> Courses </h2>
-    {!this.props.studentAuth ? <LoginNotification /> :
+    {!this.props.auth ?
+     <Notification
+      text="Login to see available courses."
+     /> :
      <div className="home-courses-container grid-container">
-      {playlist}
+      {course}
      </div>
+    }
+    {this.props.auth
+     && this.state.emptyCourses ?
+     <Notification
+      text="No course was found."
+     /> :
+     null
+    }
+    {this.props.auth
+     && !this.state.emptyCourses
+     && !this.state.courses
+     ?
+     <Spinner />
+     : null
     }
    </div>
   )
@@ -128,32 +179,24 @@ class HomeCourses extends Component {
 
 const mapStateToProps = (state) => {
  return {
-  studentAuth: state.studentAuthentication.studentAuth,
-  studentData: state.studentAuthentication.studentData,
-  id: state.playListId,
+  auth: state.authentication.auth,
+  authData: state.authentication.authData,
   users: state.users,
-  playlist: state.playListItems.playlist
+  allCourses: state.allCourses
  }
 };
 
 const mapDispatchToProps = (dispatch) => {
  return {
-  onGetPlayListId: () => dispatch(action.getPlaylistId()),
-  onGetPlayListItems: (id) => dispatch(action.getPlaylistItems(id)),
-  onRemovePlayList: () => dispatch(action.removePlaylist()),
-  onGetUser: (query) => dispatch(action.getUsers(query))
+  onGetUser: (query) => dispatch(action.getUsers(query)),
+  onGetAllCourses: () => dispatch(action.getAllCourses())
  }
 }
 
 HomeCourses.propTypes = {
- studentAuth: PropTypes.bool,
- studentData: PropTypes.object,
+ auth: PropTypes.bool,
+ authData: PropTypes.object,
  users: PropTypes.object,
- id: PropTypes.string,
- playlist: PropTypes.array,
- onGetPlayListId: PropTypes.func,
- onGetPlayListItems: PropTypes.func,
- onRemovePlayList: PropTypes.func,
  onGetUser: PropTypes.func,
 }
 
