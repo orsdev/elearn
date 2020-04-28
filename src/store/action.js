@@ -27,3 +27,17 @@ export const getUsers = (query) => {
    })
  }
 }
+
+export const getAllCourses = () => {
+ return async (dispatch) => {
+  await jsonServer.get('/tutors')
+   .then(function (response) {
+
+    dispatch({
+     type: types.GET_COURSES,
+     courses: response.data,
+     isSuccessful: true
+    })
+   })
+ }
+};
