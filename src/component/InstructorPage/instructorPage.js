@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as action from '../../store/action';
+import PropTypes from 'prop-types';
 import jsonServer from '../../api/jsonServer';
 import GoogleLoginButton from '../../component/Button/loginButton/googleLoginButton';
 import { Link } from 'react-router-dom';
@@ -95,7 +96,9 @@ class InstructorPage extends Component {
   }
 
   return (
-   <div className="instructorPage">
+   <div
+    data-test="instructorPage-component"
+    className="instructorPage">
     <div className="instructorPage-hero">
      <div className="instructorPage-hero-body">
       <h1>Launch Your Course For Free</h1>
@@ -154,6 +157,15 @@ const mapDispatchToProps = (dispatch) => {
   onLogOutUser: () => dispatch(action.logOutUser()),
   onAuthenticate: (authData, auth) => dispatch(action.authenticate(authData, auth))
  }
+}
+
+InstructorPage.propTypes = {
+ auth: PropTypes.bool,
+ authData: PropTypes.object,
+ users: PropTypes.object,
+ onGetUser: PropTypes.func,
+ onLogOutUser: PropTypes.func,
+ onAuthenticate: PropTypes.func
 }
 
 
