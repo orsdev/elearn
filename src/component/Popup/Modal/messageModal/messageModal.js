@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Backdrop from '../../Backdrop/backdrop';
 
 const messageModal = (props) => {
@@ -8,14 +9,16 @@ const messageModal = (props) => {
  if (props.errorMessage) {
   popup = (
    <Backdrop>
-    <div className="messageModal">
+    <div
+     data-test="messageModal-component"
+     className="messageModal">
      <p className="messageModal-error">
-      There was a problem with your request.
-      Please try again later.
+      {props.text}
      </p>
      <button
+      data-test="button"
       onClick={props.closeModal}
-      className="close">Close Modal</button>
+      className="close">X</button>
     </div>
    </Backdrop>
   )
@@ -26,6 +29,12 @@ const messageModal = (props) => {
    {popup}
   </Fragment>
  )
+}
+
+messageModal.propTypes = {
+ text: PropTypes.string,
+ errorMessage: PropTypes.bool,
+ closeModal: PropTypes.func
 }
 
 export default messageModal;

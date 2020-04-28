@@ -615,7 +615,7 @@
 .messageModal {
   text-align: center;
   width: 500px;
-  height: 190px;
+  height: 200px;
   background: white;
   padding: 60px 30px;
   position: absolute;
@@ -626,24 +626,7 @@
 .messageModal p {
   font-size: 2rem;
   width: 90%;
-}
-.messageModal .close {
-  margin-top: 20px;
-  border: 1px solid #044bd9;
-  padding: 8px 10px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  background-color: transparent;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  z-index: 10;
-}
-.messageModal .close:hover {
-  background: #044bd9;
-  color: white;
+  margin-top: 10px;
 }
 
 .banner {
@@ -802,6 +785,10 @@
   }
 
   .uploadModal {
+    width: 90%;
+  }
+
+  .messageModal {
     width: 90%;
   }
 }
