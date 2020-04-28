@@ -599,6 +599,7 @@
 .progress {
   background-color: #4cb1f7;
   width: 0;
+  margin-top: 10px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -781,6 +782,8 @@
 }
 @media (max-width: 680px) {
   .banner a {
+    display: inline-block;
+    text-align: center;
     font-size: 2.2rem;
     width: 250px;
   }
@@ -796,6 +799,10 @@
 
   .instructorPage-hero-body {
     width: 80%;
+  }
+
+  .uploadModal {
+    width: 90%;
   }
 }
 @media (max-width: 520px) {
@@ -856,7 +863,6 @@
   }
 
   .banner a {
-    text-align: center;
     font-size: 1.8rem;
     padding-top: 15px;
     padding-bottom: 15px;

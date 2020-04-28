@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Backdrop from '../../Backdrop/backdrop';
 import Spinner from '../../../Spinner/spinner';
+import Completed from '../../../../assets/img/completed.png';
 
 const uploadModal = (props) => {
 
@@ -9,19 +11,23 @@ const uploadModal = (props) => {
  if (props.loader) {
   popup = (
    <Backdrop>
-    <div className="uploadModal">
+    <div
+     data-test="uploadModal-component"
+     className="uploadModal">
      {props.completed
-      ? <h3>Upload Completed...</h3> :
+      ? <img src={Completed} alt="task completed icon" /> :
       <Spinner />
      }
-     <div className="progress">
+     <div data-test="progress"
+      className="progress">
       <div className="progress-bar"></div>
      </div>
      <div>
       {props.completed ?
        <button
+        data-test="button"
         onClick={props.closeModal}
-        className="close">Close Modal</button>
+        className="close">X</button>
        : null}
      </div>
     </div>
@@ -34,6 +40,12 @@ const uploadModal = (props) => {
    {popup}
   </Fragment>
  )
+}
+
+uploadModal.propTypes = {
+ completed: PropTypes.bool,
+ loader: PropTypes.bool,
+ closeModal: PropTypes.func
 }
 
 export default uploadModal;
