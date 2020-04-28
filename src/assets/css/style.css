@@ -257,12 +257,6 @@
   overflow-y: hidden;
   position: relative;
 }
-.course-body h4 {
-  font-size: 1.8rem;
-  color: black;
-  width: 100%;
-  word-wrap: break-word;
-}
 .course-body p {
   margin-top: 8px;
   padding: 4px 2px;
@@ -272,28 +266,42 @@
   color: black;
   word-wrap: break-word;
 }
+.course-body-footer {
+  position: absolute;
+  text-align: center;
+  width: 94%;
+  display: flex;
+  align-items: center;
+  bottom: 6px;
+  margin-top: 6px;
+}
+.course-body-footer p {
+  margin: 0;
+  width: calc(100% - 50px);
+  text-align: left;
+}
+.course-body-footer i {
+  font-size: 2.2rem;
+  width: 50px;
+  cursor: pointer;
+}
+.course-body-footer .fa-heart {
+  color: #ffe502;
+}
+.course-body-footer .fa-heart-o {
+  color: black;
+}
+.course-body h4 {
+  font-size: 1.8rem;
+  color: black;
+  width: 100%;
+  word-wrap: break-word;
+}
 .course-body .author-name {
   position: absolute;
   bottom: 8px;
   width: 90%;
   opacity: 0.7;
-}
-
-.fav-icon {
-  position: absolute;
-  bottom: 5px;
-  padding: 10px;
-  margin-top: 8px;
-}
-.fav-icon i {
-  font-size: 2.2rem;
-  cursor: pointer;
-}
-.fav-icon .fa-heart {
-  color: #ffe502;
-}
-.fav-icon .fa-heart-o {
-  color: black;
 }
 
 .error-message {
