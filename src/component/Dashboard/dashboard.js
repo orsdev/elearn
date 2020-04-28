@@ -164,6 +164,10 @@ class Dashboard extends Component {
 
  closeModal = () => {
 
+  //reset input(file) value
+  const videoFile = document.getElementById('videoFile');
+  videoFile.value = null;
+
   this.setState({
    loader: false,
    errorMessage: false,

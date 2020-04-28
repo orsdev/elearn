@@ -17,6 +17,17 @@ class InstructorPage extends Component {
   };
  }
 
+ componentDidMount() {
+  if (this.props.auth) {
+   if (this.props.users.success) {
+    this.setState({
+     courses: this.props.users.user[0].courses
+    })
+   }
+  }
+ }
+
+
  componentDidUpdate(prevProps, prevState) {
 
   if (this.props.auth) {
@@ -132,7 +143,10 @@ class InstructorPage extends Component {
       /> :
       null
      }
-     {this.props.auth && !this.state.courses
+     {this.props.auth &&
+      this.state.emptyCourses === false
+      &&
+      !this.state.courses
       ?
       <Spinner />
       : null
