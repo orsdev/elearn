@@ -177,6 +177,8 @@ class Dashboard extends Component {
   return (
    <Fragment>
     <MessageModal
+     text="There was a problem with your request.
+      Please try again later."
      closeModal={this.closeModal}
      errorMessage={this.state.errorMessage} />
     <UploadModal
