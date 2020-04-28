@@ -197,7 +197,9 @@ HomeCourses.propTypes = {
  auth: PropTypes.bool,
  authData: PropTypes.object,
  users: PropTypes.object,
+ allCourses: PropTypes.object,
  onGetUser: PropTypes.func,
+ onGetAllCourses: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeCourses);
