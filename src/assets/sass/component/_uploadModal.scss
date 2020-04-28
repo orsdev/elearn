@@ -17,6 +17,24 @@
     justify-content: center;
     align-items: center;
   }
+
+  img {
+    width: 60px;
+    height: 60px;
+    animation: scale 0.9s ease infinite alternate;
+    -webkit-animation: scale 0.9s ease infinite alternate;
+  }
+}
+
+@keyframes scale {
+  from {
+    width: 65px;
+    height: 65px;
+  }
+  to {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .progress {

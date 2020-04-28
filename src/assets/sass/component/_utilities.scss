@@ -87,20 +87,27 @@
 
 .close {
   margin-top: 20px;
-  border: 1px solid $color-2;
-  padding: 8px 10px;
-  font-size: 1.4rem;
+  background: black;
+  border: 2px solid black;
+  box-shadow: 0 1px 5px -1px black;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 1.6rem;
+  font-family: cursive;
+  position: absolute;
+  top: 8px;
+  right: 20px;
   font-weight: 600;
-  background-color: transparent;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   z-index: 10;
 
-  &:hover {
-    background: $color-2;
-    color: white;
+  &:active {
+    box-shadow: 0 2px 5px -1px black;
+    font-size: 1.5rem;
   }
 }

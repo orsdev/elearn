@@ -28,6 +28,15 @@
   }
 }
 
+@media (max-width: 680px) {
+  .banner {
+    a {
+      font-size: 2.2rem;
+      width: 250px;
+    }
+  }
+}
+
 @media (max-width: 639px) {
   .grid-container {
     display: inline-block !important;
@@ -35,6 +44,12 @@
 
   .grid-item:not(:last-child) {
     margin-bottom: 35px;
+  }
+
+  .instructorPage {
+    &-hero-body {
+      width: 80%;
+    }
   }
 }
 
@@ -54,7 +69,44 @@
     }
   }
 
-  .loginNotification {
+  .instructorPage {
+    &-hero-body {
+      width: 86%;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  .dashboard {
+    padding: 30px 20px;
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    .form-group {
+      input,
+      textarea {
+        padding: 13px 10px;
+        font-size: 1.6rem;
+      }
+    }
+
+    .video-label {
+      font-size: 1.6rem;
+      letter-spacing: 0.4px;
+    }
+
+    .button-blue {
+      padding-right: 2px;
+      padding-left: 2px;
+      font-size: 2rem;
+    }
+  }
+
+  .notification {
     h1 {
       font-size: 2.2rem;
     }
@@ -69,10 +121,55 @@
   }
 }
 
+@media (max-width: 300px) {
+  .hero {
+    &-body {
+      h1 {
+        font-size: 3.2rem;
+      }
+    }
+  }
+
+  .banner {
+    a {
+      text-align: center;
+      font-size: 1.8rem;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      width: 90%;
+    }
+  }
+
+  .instructorPage {
+    h1 {
+      font-size: 3.2rem;
+    }
+  }
+
+  .dashboard {
+    h1 {
+      font-size: 3.2rem;
+    }
+  }
+
+  .notification {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
 @media (max-width: 280px) {
   .first-letter {
     display: inline;
     animation: none;
     -webkit-animation: none;
+  }
+
+  .instructorPage {
+    a {
+      padding: 15px 5px;
+      font-size: 1.7rem;
+    }
   }
 }

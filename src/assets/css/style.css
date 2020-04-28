@@ -307,21 +307,28 @@
 
 .close {
   margin-top: 20px;
-  border: 1px solid #044bd9;
-  padding: 8px 10px;
-  font-size: 1.4rem;
+  background: black;
+  border: 2px solid black;
+  box-shadow: 0 1px 5px -1px black;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 1.6rem;
+  font-family: cursive;
+  position: absolute;
+  top: 8px;
+  right: 20px;
   font-weight: 600;
-  background-color: transparent;
-  border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   z-index: 10;
 }
-.close:hover {
-  background: #044bd9;
-  color: white;
+.close:active {
+  box-shadow: 0 2px 5px -1px black;
+  font-size: 1.5rem;
 }
 
 .footer {
@@ -351,12 +358,13 @@
   background-color: white;
   padding: 30px;
   position: relative;
-  top: 85px;
+  top: 82px;
 }
 .dashboard h1 {
   font-size: 4.5rem;
   width: 100%;
   text-align: center;
+  margin-top: 30px;
 }
 .dashboard-nav {
   position: absolute;
@@ -571,7 +579,23 @@
   justify-content: center;
   align-items: center;
 }
+.uploadModal img {
+  width: 60px;
+  height: 60px;
+  animation: scale 0.9s ease infinite alternate;
+  -webkit-animation: scale 0.9s ease infinite alternate;
+}
 
+@keyframes scale {
+  from {
+    width: 65px;
+    height: 65px;
+  }
+  to {
+    width: 60px;
+    height: 60px;
+  }
+}
 .progress {
   background-color: #4cb1f7;
   width: 0;
@@ -712,6 +736,7 @@
   padding-bottom: 20px;
 }
 .instructorPage a {
+  display: inline-block;
   text-decoration: none;
   margin-top: 20px;
   background: transparent;
@@ -754,6 +779,12 @@
     text-align: right;
   }
 }
+@media (max-width: 680px) {
+  .banner a {
+    font-size: 2.2rem;
+    width: 250px;
+  }
+}
 @media (max-width: 639px) {
   .grid-container {
     display: inline-block !important;
@@ -761,6 +792,10 @@
 
   .grid-item:not(:last-child) {
     margin-bottom: 35px;
+  }
+
+  .instructorPage-hero-body {
+    width: 80%;
   }
 }
 @media (max-width: 520px) {
@@ -775,7 +810,35 @@
     text-align: center;
   }
 
-  .loginNotification h1 {
+  .instructorPage-hero-body {
+    width: 86%;
+  }
+  .instructorPage h1 {
+    font-size: 3.5rem;
+  }
+
+  .dashboard {
+    padding: 30px 20px;
+  }
+  .dashboard h1 {
+    font-size: 3.5rem;
+  }
+  .dashboard .form-group input,
+.dashboard .form-group textarea {
+    padding: 13px 10px;
+    font-size: 1.6rem;
+  }
+  .dashboard .video-label {
+    font-size: 1.6rem;
+    letter-spacing: 0.4px;
+  }
+  .dashboard .button-blue {
+    padding-right: 2px;
+    padding-left: 2px;
+    font-size: 2rem;
+  }
+
+  .notification h1 {
     font-size: 2.2rem;
   }
 
@@ -787,11 +850,41 @@
     margin-right: 0;
   }
 }
+@media (max-width: 300px) {
+  .hero-body h1 {
+    font-size: 3.2rem;
+  }
+
+  .banner a {
+    text-align: center;
+    font-size: 1.8rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 90%;
+  }
+
+  .instructorPage h1 {
+    font-size: 3.2rem;
+  }
+
+  .dashboard h1 {
+    font-size: 3.2rem;
+  }
+
+  .notification h1 {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 280px) {
   .first-letter {
     display: inline;
     animation: none;
     -webkit-animation: none;
+  }
+
+  .instructorPage a {
+    padding: 15px 5px;
+    font-size: 1.7rem;
   }
 }
 
