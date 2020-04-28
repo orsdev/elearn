@@ -20,8 +20,8 @@ const validationShema = Yup.object().shape({
 
  description: Yup
   .string()
-  .min(40, "Text must be greater than 40.")
-  .max(200, "Text must be less than or equal to 200.")
+  .min(40, "Text must be greater than 40 or equal to 40.")
+  .max(200, "Text must be less than or equal to 200 or equal to 200.")
   .required("Please fill out this field.")
 });
 
