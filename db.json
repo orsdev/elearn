@@ -27,14 +27,24 @@
     {
       "id": "oluwadareysamuel@gmail.com",
       "name": "Ogundare Samuel",
-      "courses": []
+      "courses": [
+        {
+          "title": "My Resume ",
+          "description": "asdfadsfdfafsadfsdfsdfdsfdssdfasdfsafdfsdfdffdf",
+          "url": "http://res.cloudinary.com/elearn/video/upload/v1588115009/gnu79kadm9szzbfqknjr.mp4",
+          "author": "Ogundare Samuel"
+        }
+      ]
     }
   ],
   "students": [
     {
       "id": "elearnlearn@gmail.com",
       "name": "Elearn Elearn",
-      "starred": []
+      "starred": [
+        "http://res.cloudinary.com/elearn/video/upload/v1587977448/jpfhvlnvxa5bq2m2pcqa.mp4",
+        "http://res.cloudinary.com/elearn/video/upload/v1587906527/egpyyq9t9ols2z2gwepd.mp4"
+      ]
     },
     {
       "id": "oluwadareysamuel@gmail.com",
