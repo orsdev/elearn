@@ -24,11 +24,11 @@ class InstructorPage extends Component {
    if (this.props.users.success !== prevProps.users.success) {
     if (this.props.users.user.length && this.props.users.user[0].courses.length) {
      //call function and update redux state
-     this.props.getUserCourses(this.props.users.user[0].courses, true);
+     this.props.getUserCourses(this.props.users.user[0].courses, false);
 
     } else {
      //call function and update redux state
-     this.props.getUserCourses(this.props.users.user[0].courses, false);
+     this.props.getUserCourses(null, true);
     }
    }
   }
