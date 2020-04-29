@@ -41,3 +41,11 @@ export const getAllCourses = () => {
    })
  }
 };
+
+export const userCourses = (courses, isEmpty) => {
+ return {
+  type: types.USER_COURSES,
+  courses: courses,
+  isEmpty: isEmpty
+ }
+};
