@@ -31,7 +31,7 @@
     "yup": "^0.28.4"
   },
   "scripts": {
-    "start": "env-cmd -e prod node server.js",
+    "start": "env-cmd -e dev node server.js",
     "dev": "env-cmd -e dev react-scripts start",
     "build": "env-cmd -e prod react-scripts build",
     "test": "react-scripts test",
