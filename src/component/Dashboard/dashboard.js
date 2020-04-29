@@ -106,7 +106,6 @@ class Dashboard extends Component {
   const copyState = { ...this.state };
   const { name, email } = this.props.authData;
 
-
   // *********** Upload file to Cloudinary ******************** //
   var url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDNAME}/upload`;
   var xhr = new XMLHttpRequest();
@@ -145,7 +144,6 @@ class Dashboard extends Component {
       //post uploaded files to json-server
       jsonServer.patch('/tutors/' + email, { courses: course });
      });
-
    }
   };
 

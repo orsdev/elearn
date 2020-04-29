@@ -9,24 +9,6 @@ import Notification from '../Notification/notification';
 import Spinner from '../Spinner/spinner';
 
 class InstructorPage extends Component {
- constructor(props) {
-  super(props);
-  this.state = {
-   courses: null,
-   emptyCourses: false
-  };
- }
-
- componentDidMount() {
-  if (this.props.auth) {
-   if (this.props.users.success) {
-    this.setState({
-     courses: this.props.users.user[0].courses
-    })
-   }
-  }
- }
-
 
  componentDidUpdate(prevProps, prevState) {
 
@@ -41,13 +23,12 @@ class InstructorPage extends Component {
   if (this.props.auth) {
    if (this.props.users.success !== prevProps.users.success) {
     if (this.props.users.user.length && this.props.users.user[0].courses.length) {
-     this.setState({
-      courses: this.props.users.user[0].courses
-     })
+     //call function and update redux state
+     this.props.getUserCourses(this.props.users.user[0].courses, true);
+
     } else {
-     this.setState({
-      emptyCourses: true
-     })
+     //call function and update redux state
+     this.props.getUserCourses(this.props.users.user[0].courses, false);
     }
    }
   }
@@ -86,8 +67,8 @@ class InstructorPage extends Component {
  render() {
 
   let course;
-  if (this.state.courses) {
-   course = this.state.courses.map((value, index) => {
+  if (this.props.userCourses.courses) {
+   course = this.props.userCourses.courses.map((value, index) => {
     return (
      <Fragment key={index}>
       <div className="grid-item" id={value.url}>
@@ -137,16 +118,16 @@ class InstructorPage extends Component {
       </div>
      }
      {this.props.auth
-      && this.state.emptyCourses ?
+      && this.props.userCourses.isEmpty ?
       <Notification
        text="No course was found."
       /> :
       null
      }
-     {this.props.auth &&
-      this.state.emptyCourses === false
+     {this.props.auth
       &&
-      !this.state.courses
+      !this.props.userCourses.isEmpty
+      && !this.props.userCourses.courses
       ?
       <Spinner />
       : null
@@ -161,7 +142,8 @@ const mapStateToProps = (state) => {
  return {
   auth: state.authentication.auth,
   authData: state.authentication.authData,
-  users: state.users
+  users: state.users,
+  userCourses: state.userCourses
  }
 };
 
@@ -169,7 +151,8 @@ const mapDispatchToProps = (dispatch) => {
  return {
   onGetUser: (query) => dispatch(action.getUsers(query)),
   onLogOutUser: () => dispatch(action.logOutUser()),
-  onAuthenticate: (authData, auth) => dispatch(action.authenticate(authData, auth))
+  onAuthenticate: (authData, auth) => dispatch(action.authenticate(authData, auth)),
+  getUserCourses: (courses, isEmpty) => dispatch(action.userCourses(courses, isEmpty))
  }
 }
 
