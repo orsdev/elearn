@@ -147,8 +147,7 @@ class Dashboard extends Component {
    }
   };
 
-  xhr.onerror = (err) => {
-   console.log('something went wrong', err)
+  xhr.onerror = () => {
    this.setState({
     loader: false,
     errorMessage: true
