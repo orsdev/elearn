@@ -13,8 +13,7 @@ class InstructorPage extends Component {
  componentDidUpdate(prevProps, prevState) {
 
   if (this.props.auth) {
-   if (this.props.auth !== prevProps.auth
-    && this.props.authData !== prevProps.authData) {
+   if (this.props.authData !== prevProps.authData) {
     const { email } = this.props.authData;
     this.props.onGetUser('tutors?id=' + email);
    }
@@ -125,9 +124,8 @@ class InstructorPage extends Component {
       null
      }
      {this.props.auth
-      &&
-      !this.props.userCourses.isEmpty
       && !this.props.userCourses.courses
+      && !this.props.userCourses.isEmpty
       ?
       <Spinner />
       : null
