@@ -137,6 +137,9 @@ class Dashboard extends Component {
     formData.url = url;
     formData.author = name;
 
+    console.log('response ' + response);
+    console.log('formData ' + formData);
+
     jsonServer.get('/tutors?id=' + email)
      .then(function (response) {
       const course = response.data[0].courses;
