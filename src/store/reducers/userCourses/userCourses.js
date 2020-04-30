@@ -13,6 +13,12 @@ const userCourses = (state = initialState, action) => {
     courses: action.courses,
     isEmpty: action.isEmpty
    };
+  case types.LOGOUT_USER:
+   return {
+    ...state,
+    courses: null,
+    isEmpty: false
+   }
   default:
    return state;
  }

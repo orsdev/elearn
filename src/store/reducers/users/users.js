@@ -8,6 +8,11 @@ const users = (state = { user: [], success: false }, action) => {
     user: action.data,
     success: action.success
    };
+  case types.LOGOUT_USER:
+   return {
+    user: null,
+    success: false
+   }
   default:
    return state;
  }
