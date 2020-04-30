@@ -32,7 +32,7 @@ class Dashboard extends Component {
   this.state = {
    uploadCompleted: false,
    modalClose: false,
-   errorMessage: false,
+   openModal: false,
    video: null,
    videoFormat: null,
    loader: false,
@@ -150,7 +150,7 @@ class Dashboard extends Component {
   xhr.onerror = () => {
    this.setState({
     loader: false,
-    errorMessage: true
+    openModal: true
    })
   }
 
@@ -168,7 +168,7 @@ class Dashboard extends Component {
 
   this.setState({
    loader: false,
-   errorMessage: false,
+   openModal: false,
    uploadCompleted: false
   });
 
@@ -182,7 +182,7 @@ class Dashboard extends Component {
      text="There was a problem with your request.
       Please try again later."
      closeModal={this.closeModal}
-     errorMessage={this.state.errorMessage} />
+     openModal={this.state.openModal} />
     <UploadModal
      closeModal={this.closeModal}
      completed={this.state.uploadCompleted}
