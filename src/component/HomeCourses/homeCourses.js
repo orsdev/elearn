@@ -10,7 +10,9 @@ class HomeCourses extends Component {
 
  state = {
   emptyCourses: false,
-  courses: null
+  courses: null,
+  toggleFavourite: false,
+  favouriteMessage: ""
  }
 
  componentDidUpdate(prevProps, prevState) {
@@ -53,10 +55,14 @@ class HomeCourses extends Component {
 
  }
 
-
  /* add and remove video 
- from favorite list function */
- favoriteVideo = (e) => {
+ from favourite list function */
+ favouriteVideo = (e) => {
+
+  this.setState({
+   favouriteMessage: ""
+  });
+
   let target = e.target;
   let id = target.id;
   let getAttribute = target.getAttribute('data-fav');
@@ -64,10 +70,14 @@ class HomeCourses extends Component {
 
   if (getAttribute === 'remove') {
 
+   this.setState({
+    favouriteMessage: "removed from favourite"
+   });
+
    target.className = "fa fa-heart-o";
    target.setAttribute("data-fav", "add");
 
-   //remove video from favorite list
+   //remove video from favourite list
    jsonServer.get('/students?id=' + email)
     .then(function (response) {
      const data = response.data[0].starred;
@@ -80,10 +90,15 @@ class HomeCourses extends Component {
     });
 
   } else {
+
+   this.setState({
+    favouriteMessage: "added to favourite"
+   });
+
    target.className = "fa fa-heart";
    target.setAttribute("data-fav", "remove");
 
-   //add video to favorite list
+   //add video to favourite list
    jsonServer.get('/students?id=' + email)
     .then(function (response) {
      const data = response.data[0].starred;
@@ -93,13 +108,24 @@ class HomeCourses extends Component {
 
   }
 
+  this.setState({
+   toggleFavourite: true
+  });
+
+  setTimeout(() => {
+   this.setState({
+    toggleFavourite: false
+   });
+
+  }, 3000)
+
  }
 
  render() {
 
   let course;
   let dataAtrribute;
-  let favorite;
+  let favourite;
 
   if (this.props.auth && this.props.allCourses.isSuccessful) {
 
@@ -109,9 +135,9 @@ class HomeCourses extends Component {
      if (this.props.users.success && this.props.users.user.length) {
 
       //assign true of false if url is found
-      favorite = this.props.users.user[0].starred.includes(value.url);
+      favourite = this.props.users.user[0].starred.includes(value.url);
 
-      if (favorite) {
+      if (favourite) {
        dataAtrribute = "remove";
       } else {
        dataAtrribute = "add";
@@ -129,10 +155,14 @@ class HomeCourses extends Component {
          <h4 className="course-title">{value.title}</h4>
          <p className="course-about">{value.description}</p>
          <div className="course-body-footer">
+          {this.state.toggleFavourite ?
+           <small>{this.state.favouriteMessage}</small> :
+           null
+          }
           <p className="course-author">{value.author}</p>
           <i
-           onClick={this.favoriteVideo}
-           className={favorite ? "fa fa-heart" : "fa fa-heart-o"}
+           onClick={this.favouriteVideo}
+           className={favourite ? "fa fa-heart" : "fa fa-heart-o"}
            data-fav={dataAtrribute}
            aria-hidden="true"
            id={value.url}></i>
@@ -146,33 +176,35 @@ class HomeCourses extends Component {
   }
 
   return (
-   <div
-    className="home-courses"
-    data-test="home-courses">
-    <h2> Courses </h2>
-    {!this.props.auth ?
-     <Notification
-      text="Login to see available courses."
-     /> :
-     <div className="home-courses-container grid-container">
-      {course}
-     </div>
-    }
-    {this.props.auth
-     && this.state.emptyCourses ?
-     <Notification
-      text="No course was found."
-     /> :
-     null
-    }
-    {this.props.auth
-     && !this.state.emptyCourses
-     && !this.state.courses
-     ?
-     <Spinner />
-     : null
-    }
-   </div>
+   <Fragment>
+    <div
+     className="home-courses"
+     data-test="home-courses">
+     <h2> Courses </h2>
+     {!this.props.auth ?
+      <Notification
+       text="Login to see available courses."
+      /> :
+      <div className="home-courses-container grid-container">
+       {course}
+      </div>
+     }
+     {this.props.auth
+      && this.state.emptyCourses ?
+      <Notification
+       text="No course was found."
+      /> :
+      null
+     }
+     {this.props.auth
+      && !this.state.emptyCourses
+      && !this.state.courses
+      ?
+      <Spinner />
+      : null
+     }
+    </div>
+   </Fragment>
   )
  }
 }
