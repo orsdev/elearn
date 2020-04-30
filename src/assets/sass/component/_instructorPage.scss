@@ -65,8 +65,7 @@
     margin-right: 20px;
     border: 2px solid white;
 
-    &:hover,
-    &:focus {
+    &:active {
       background: $color-3;
       border: 2px solid $color-3;
       transition: background 0.3s;

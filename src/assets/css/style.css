@@ -132,7 +132,7 @@
   margin-right: 20px;
   border: 2px solid white !important;
 }
-.login-btn:hover, .login-btn:focus {
+.login-btn:active {
   background: #0339a6 !important;
   border: 2px solid #0339a6 !important;
   transition: background 0.3s;
@@ -152,7 +152,7 @@
   opacity: 1 !important;
   border: 2px solid white !important;
 }
-.logout-btn:hover, .logout-btn:focus {
+.logout-btn:active {
   background: black !important;
   transition: background 0.3s;
   -webkit-transition: background 0.3s;
@@ -744,7 +744,7 @@
   margin-right: 20px;
   border: 2px solid white;
 }
-.instructorPage a:hover, .instructorPage a:focus {
+.instructorPage a:active {
   background: #0339a6;
   border: 2px solid #0339a6;
   transition: background 0.3s;
