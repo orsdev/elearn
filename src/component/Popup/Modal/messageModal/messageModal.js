@@ -6,7 +6,7 @@ const messageModal = (props) => {
 
  let popup;
 
- if (props.errorMessage) {
+ if (props.openModal) {
   popup = (
    <Backdrop>
     <div
