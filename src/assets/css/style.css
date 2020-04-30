@@ -191,6 +191,16 @@
   padding: 5px;
   height: 100%;
 }
+.home-courses small {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  font-size: 1.15rem;
+  color: black;
+  color: #0554f2;
+  font-weight: 800;
+}
 
 .notification {
   width: 100%;
@@ -248,7 +258,7 @@
 }
 
 .course-body {
-  min-height: 200px;
+  min-height: 220px;
   max-height: 100%;
   width: 100%;
   background: white;
@@ -270,6 +280,7 @@
   position: absolute;
   text-align: center;
   width: 94%;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   bottom: 6px;
@@ -567,9 +578,10 @@
 }
 .backdrop {
   position: fixed;
+  top: 0;
   height: 100vh;
   width: 100%;
-  z-index: 5;
+  z-index: 20;
   background-color: rgba(5, 68, 170, 0.55);
 }
 
