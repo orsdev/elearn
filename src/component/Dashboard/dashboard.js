@@ -107,7 +107,7 @@ class Dashboard extends Component {
   const { name, email } = this.props.authData;
 
   // *********** Upload file to Cloudinary ******************** //
-  var url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDNAME}/upload`;
+  var url = 'https://api.cloudinary.com/v1_1/elearn/upload';
   var xhr = new XMLHttpRequest();
   var fd = new FormData();
   xhr.open('POST', url, true);
@@ -137,9 +137,6 @@ class Dashboard extends Component {
     formData.url = url;
     formData.author = name;
 
-    console.log('response ' + response);
-    console.log('formData ' + formData);
-
     jsonServer.get('/tutors?id=' + email)
      .then(function (response) {
       const course = response.data[0].courses;
@@ -150,14 +147,15 @@ class Dashboard extends Component {
    }
   };
 
-  xhr.onerror = () => {
+  xhr.onerror = (err) => {
+   console.log('something went wrong', err)
    this.setState({
     loader: false,
     errorMessage: true
    })
   }
 
-  fd.append('upload_preset', process.env.REACT_APP_UNSIGNEDUPLOADPRESET);
+  fd.append('upload_preset', 'elearn');
   fd.append('file', file);
   xhr.send(fd);
 
