@@ -24,4 +24,19 @@ describe('allCourses Reducer', () => {
   expect(allcourses).toEqual(state);
  });
 
+ test('Should return new state if action.type(LOGOUT_USER) is provided', () => {
+
+  const state = {
+   courses: null,
+   isSuccessful: false
+  }
+
+  const action = {
+   type: types.LOGOUT_USER
+  }
+
+  const allcourses = allCourses(state, action);
+  expect(allcourses).toEqual(state);
+ });
+
 });
