@@ -10,27 +10,6 @@
     text-align: center;
     margin-top: 30px;
   }
-
-  &-nav {
-    position: absolute;
-    top: 10px;
-    display: flex;
-    width: 80px;
-    align-items: center;
-
-    a {
-      font-size: 1.6rem;
-      text-decoration: none;
-      color: $color-4;
-      font-weight: 700;
-    }
-
-    i {
-      font-size: 1.6rem;
-      color: black;
-      margin-right: 7px;
-    }
-  }
 }
 
 .uploadForm {

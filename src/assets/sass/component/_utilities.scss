@@ -12,11 +12,32 @@
 
   &-item {
     width: 100% !important;
+    position: relative;
 
     video {
       width: 100%;
       height: 190px;
       object-fit: cover;
+    }
+  }
+
+  &-body {
+    padding: 5px 8px;
+    padding-top: 30px;
+    position: relative;
+    outline: 2px inset white;
+
+    .fa-times {
+      display: inline-block;
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      font-size: 2rem;
+      cursor: pointer;
+
+      &:active {
+        font-size: 1.9rem;
+      }
     }
   }
 }
@@ -120,5 +141,26 @@
   &:active {
     box-shadow: 0 2px 5px -1px black;
     font-size: 1.5rem;
+  }
+}
+
+.home-nav {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  width: 80px;
+  align-items: center;
+
+  a {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: $color-4;
+    font-weight: 700;
+  }
+
+  i {
+    font-size: 1.6rem;
+    color: black;
+    margin-right: 7px;
   }
 }
