@@ -191,7 +191,7 @@ class Dashboard extends Component {
      data-test="dashboard-component"
      className="dashboard">
      <h1>Upload Your Courses</h1>
-     <nav className="dashboard-nav">
+     <nav className="dashboard-nav home-nav">
       <Link to="/instructor">
        <i className=" fa fa-arrow-left"></i>
        Home
