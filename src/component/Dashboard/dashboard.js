@@ -71,7 +71,7 @@ class Dashboard extends Component {
     */
   if (e.target.files.length) {
    if (e.target.files &&
-    e.target.files[0].type === "video/mp4") {
+    (/video\//).test(e.target.files[0].type)) {
     this.setState({
      video: e.target.files[0]
     })
@@ -83,9 +83,9 @@ class Dashboard extends Component {
   if file not and mp4 format
   */
   if (e.target.files.length) {
-   if (e.target.files[0].type !== "video/mp4") {
+   if (!(/video\//).test(e.target.files[0].type)) {
     this.setState({
-     videoFormat: "Unsupported Format / Mp4 Only"
+     videoFormat: "Unsupported Format / Select a video file"
     })
    }
   }
@@ -95,7 +95,7 @@ class Dashboard extends Component {
   */
   if (e.target.files.length === 0) {
    this.setState({
-    videoFormat: "Select a Mp4 video file"
+    videoFormat: "Select a video file"
    })
   }
 
