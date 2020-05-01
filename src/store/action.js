@@ -33,9 +33,15 @@ export const getAllCourses = () => {
   await jsonServer.get('/tutors')
    .then(function (response) {
 
+    const extractCourses = response.data.filter(function (value) {
+     return value.courses.length !== 0;
+    }).map(function (value) {
+     return [...value.courses];
+    });
+
     dispatch({
      type: types.GET_COURSES,
-     courses: response.data,
+     courses: extractCourses.flat(),
      isSuccessful: true
     })
    })
