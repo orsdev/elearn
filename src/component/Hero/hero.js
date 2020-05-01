@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as action from '../../store/action';
 import jsonServer from '../../api/jsonServer';
 import GoogleLoginButton from '../Button/loginButton/googleLoginButton';
@@ -54,6 +55,12 @@ const Hero = (props) => {
       text="Student Login"
       responseGoogle={responseGoogle}
      />
+     {
+      props.auth ?
+       <Link to="/favourite"> Favourite Courses </Link>
+       :
+       null
+     }
     </div>
    </div>
   </div >
