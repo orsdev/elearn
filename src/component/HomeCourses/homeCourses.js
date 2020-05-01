@@ -12,8 +12,29 @@ class HomeCourses extends Component {
   emptyCourses: false,
   courses: null,
   toggleFavourite: false,
+  favouriteUrl: null,
   favouriteMessage: ""
  }
+
+ /*
+  called componentDidMount to update states
+  again when you routes to another page
+  */
+ componentDidMount() {
+  const { courses } = this.props.allCourses;
+  if (this.props.auth) {
+   if (courses.length !== 0) {
+    this.setState({
+     courses: courses
+    })
+   } else {
+    this.setState({
+     emptyCourses: true
+    })
+   }
+  }
+ }
+
 
  componentDidUpdate(prevProps, prevState) {
   /*
@@ -30,19 +51,13 @@ class HomeCourses extends Component {
 
     const { courses } = this.props.allCourses;
 
-    const extractCourses = courses.filter(function (value) {
-     return value.courses.length !== 0;
-    }).map(function (value) {
-     return [...value.courses];
-    });
-
     /*
     update state(courses) if course is found
     and state(emptyCourses) if none is found
     */
-    if (extractCourses.length !== 0) {
+    if (courses.length !== 0) {
      this.setState({
-      courses: extractCourses.flat()
+      courses: courses
      })
     } else {
      this.setState({
@@ -50,6 +65,21 @@ class HomeCourses extends Component {
      })
     }
 
+   }
+  }
+
+  if (this.props.auth) {
+
+   if (this.props.users.success !== prevProps.users.success
+    && this.props.users.user.length !== prevProps.users.user.length) {
+
+    const favouriteUrl = this.props.users.user[0].starred.map(function (value) {
+     return value.url;
+    });
+
+    this.setState({
+     favouriteUrl: favouriteUrl
+    })
    }
   }
 
@@ -65,10 +95,14 @@ class HomeCourses extends Component {
 
   let target = e.target;
   let id = target.id;
-  let getAttribute = target.getAttribute('data-fav');
+  let getAttributeFav = target.getAttribute('data-fav');
+  let getAttributeTitle = target.getAttribute('data-title');
+  let getAttributeAuthor = target.getAttribute('data-author');
+  let getAttributeDescription = target.getAttribute('data-description');
+
   let { email } = this.props.authData;
 
-  if (getAttribute === 'remove') {
+  if (getAttributeFav === 'remove') {
 
    this.setState({
     favouriteMessage: "removed from favourite"
@@ -83,7 +117,7 @@ class HomeCourses extends Component {
      const data = response.data[0].starred;
 
      const filterData = data.filter(function (value) {
-      return value !== id;
+      return value.url !== id;
      });
 
      jsonServer.patch('/students/' + email, { starred: filterData });
@@ -102,7 +136,12 @@ class HomeCourses extends Component {
    jsonServer.get('/students?id=' + email)
     .then(function (response) {
      const data = response.data[0].starred;
-     data.push(id);
+     data.push({
+      title: getAttributeTitle,
+      description: getAttributeDescription,
+      author: getAttributeAuthor,
+      url: id
+     });
      jsonServer.patch('/students/' + email, { starred: data });
     });
 
@@ -130,17 +169,20 @@ class HomeCourses extends Component {
   if (this.props.auth && this.props.allCourses.isSuccessful) {
 
    if (this.state.courses) {
+
     course = this.state.courses.map((value, index) => {
 
      if (this.props.users.success && this.props.users.user.length) {
 
-      //assign true of false if url is found
-      favourite = this.props.users.user[0].starred.includes(value.url);
+      if (this.state.favouriteUrl) {
+       //assign true of false if url is found
+       favourite = this.state.favouriteUrl.includes(value.url);
 
-      if (favourite) {
-       dataAtrribute = "remove";
-      } else {
-       dataAtrribute = "add";
+       if (favourite) {
+        dataAtrribute = "remove";
+       } else {
+        dataAtrribute = "add";
+       }
       }
      }
 
@@ -163,6 +205,9 @@ class HomeCourses extends Component {
           <i
            onClick={this.favouriteVideo}
            className={favourite ? "fa fa-heart" : "fa fa-heart-o"}
+           data-title={value.title}
+           data-author={value.author}
+           data-description={value.description}
            data-fav={dataAtrribute}
            aria-hidden="true"
            id={value.url}></i>
