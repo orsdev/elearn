@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import YupError from '../yupErrorHandler/yupErrorHelper';
@@ -38,16 +38,6 @@ class Dashboard extends Component {
    loader: false,
    formData: {}
   };
- }
-
- componentDidMount() {
-
-  /* when not authenticate,
-   redirect back to intructor page
-   */
-  if (!this.props.auth) {
-   this.props.history.replace('/instructor');
-  }
  }
 
  componentDidUpdate(prevProps, prevState) {
@@ -178,6 +168,11 @@ class Dashboard extends Component {
 
   return (
    <Fragment>
+    {
+     !this.props.auth ?
+      <Redirect to="/instructor" />
+      : null
+    }
     <MessageModal
      text="There was a problem with your request.
       Please try again later."

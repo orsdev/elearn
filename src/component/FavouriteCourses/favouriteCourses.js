@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import jsonServer from '../../api/jsonServer';
 import Notification from '../Notification/notification';
 import Spinner from '../Spinner/spinner';
@@ -14,11 +14,6 @@ class FavouriteCourses extends Component {
  }
 
  componentDidMount() {
-
-  //when not logged in, redirect back to home
-  if (!this.props.auth) {
-   this.props.history.replace('/');
-  }
 
   //get favourite courses when user is authenticated
   if (this.props.auth) {
@@ -97,42 +92,49 @@ class FavouriteCourses extends Component {
   };
 
   return (
-   <div className="favouriteCourses">
-    <nav className="favouriteCourses-nav home-nav">
-     <Link to="/">
-      <i className=" fa fa-arrow-left"></i>
+   <Fragment>
+    {
+     !this.props.auth ?
+      <Redirect to="/" />
+      : null
+    }
+    <div className="favouriteCourses">
+     <nav className="favouriteCourses-nav home-nav">
+      <Link to="/">
+       <i className=" fa fa-arrow-left"></i>
        Home
        </Link>
-    </nav>
-    <h2> Favourite Courses</h2>
-    {
-     this.state.favourite
-      && !this.state.isEmpty
-      ?
-      <div className="favouriteCourses-container grid-container">
-       {courses}
-      </div>
-      :
-      null
-    }
-    {
-     !this.state.favourite
-      && this.state.isEmpty
-      ?
-      <Notification
-       text="You don't have a favourite course" />
-      :
-      null
-    }
-    {
-     !this.state.favourite
-      && !this.state.isEmpty
-      ?
-      <Spinner />
-      :
-      null
-    }
-   </div>
+     </nav>
+     <h2> Favourite Courses</h2>
+     {
+      this.state.favourite
+       && !this.state.isEmpty
+       ?
+       <div className="favouriteCourses-container grid-container">
+        {courses}
+       </div>
+       :
+       null
+     }
+     {
+      !this.state.favourite
+       && this.state.isEmpty
+       ?
+       <Notification
+        text="You don't have a favourite course" />
+       :
+       null
+     }
+     {
+      !this.state.favourite
+       && !this.state.isEmpty
+       ?
+       <Spinner />
+       :
+       null
+     }
+    </div>
+   </Fragment>
   )
  }
 };
