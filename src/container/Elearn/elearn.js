@@ -6,6 +6,7 @@ import Dashboard from '../../component/Dashboard/dashboard';
 import Footer from '../../component/Footer/footer';
 import InstructorPage from '../../component/InstructorPage/instructorPage';
 import FavouriteCourses from '../../component/FavouriteCourses/favouriteCourses';
+import NoMatch from '../../component/NoMatch/noMatch';
 
 
 
@@ -19,6 +20,7 @@ class Elearn extends Component {
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/instructor" component={InstructorPage} />
     <Route exact path="/favourite" component={FavouriteCourses} />
+    <Route component={NoMatch} />
    </Switch>
   )
   return (
