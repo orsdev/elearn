@@ -55,6 +55,7 @@
   display: inline-block;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   animation: pulse 1s linear infinite;
+  margin-right: 4px;
   -webkit-animation: pulse 1s linear infinite;
 }
 
@@ -425,9 +426,7 @@
 }
 .footer strong {
   margin: 0 5px;
-  @import url("https://font.googleapis.com/css2?family=Pacifico&display=swap");
-  font-family: "Pacifico", cursive;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   color: #ffec44;
 }
 
