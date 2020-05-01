@@ -24,6 +24,7 @@ describe('InstructorPage Component', () => {
    users: {},
    onGetUser: () => { },
    onLogOutUser: () => { },
+   getUserCourses: () => { },
    onAuthenticate: () => { }
   };
 

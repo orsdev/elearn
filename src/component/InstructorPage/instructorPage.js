@@ -160,7 +160,8 @@ InstructorPage.propTypes = {
  users: PropTypes.object,
  onGetUser: PropTypes.func,
  onLogOutUser: PropTypes.func,
- onAuthenticate: PropTypes.func
+ onAuthenticate: PropTypes.func,
+ getUserCourses: PropTypes.func
 }
 
 
