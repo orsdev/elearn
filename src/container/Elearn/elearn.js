@@ -5,6 +5,7 @@ import Home from '../../component/Home/home';
 import Dashboard from '../../component/Dashboard/dashboard';
 import Footer from '../../component/Footer/footer';
 import InstructorPage from '../../component/InstructorPage/instructorPage';
+import FavouriteCourses from '../../component/FavouriteCourses/favouriteCourses';
 
 
 
@@ -17,6 +18,7 @@ class Elearn extends Component {
     <Route exact path="/" component={Home} />
     <Route exact path="/dashboard" component={Dashboard} />
     <Route exact path="/instructor" component={InstructorPage} />
+    <Route exact path="/favourite" component={FavouriteCourses} />
    </Switch>
   )
   return (
