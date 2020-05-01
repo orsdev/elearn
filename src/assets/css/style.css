@@ -2,7 +2,7 @@
   padding: 20px 30px;
   background-color: white;
   border-bottom: 4px groove #4cb1f7;
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 10;
   width: 100%;
@@ -82,7 +82,6 @@
 .hero {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/bg-hero.jpg);
   position: relative;
-  top: 35px;
   z-index: 1;
   width: 100%;
   height: 500px;
@@ -185,7 +184,7 @@
 }
 
 .home-courses {
-  margin-top: -40px;
+  margin-top: -70px;
   width: 100%;
   background: white;
   position: relative;
@@ -434,7 +433,6 @@
   background-color: white;
   padding: 30px;
   position: relative;
-  top: 82px;
 }
 .dashboard h1 {
   font-size: 4.5rem;
@@ -746,7 +744,6 @@
 .instructorPage-hero {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/instructor-bg.jpg);
   position: relative;
-  top: 35px;
   z-index: 1;
   width: 100%;
   height: 500px;
@@ -810,7 +807,6 @@
   padding: 30px;
   position: relative;
   height: 100%;
-  top: 85px;
   z-index: 5;
 }
 .favouriteCourses h2 {
@@ -821,6 +817,43 @@
   position: relative;
   background-color: white;
   padding-bottom: 20px;
+}
+
+.nomatch {
+  position: relative;
+  height: 100%;
+  background: white;
+  text-align: center;
+}
+.nomatch-body {
+  padding: 50px 10px;
+}
+.nomatch a {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+  background: #044bd9;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.7rem;
+  opacity: 1;
+  margin-right: 20px;
+  border: 2px solid white;
+}
+.nomatch a:hover {
+  background: #0339a6;
+  border: 2px solid #0339a6;
+  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+}
+.nomatch h1 {
+  font-size: 10rem;
+}
+.nomatch h2 {
+  font-size: 5rem;
 }
 
 @media (min-width: 0) and (max-width: 840px) {
@@ -924,6 +957,13 @@
 
   .login-btn {
     margin-right: 0;
+  }
+
+  .nomatch h1 {
+    font-size: 7rem;
+  }
+  .nomatch h2 {
+    font-size: 4rem;
   }
 }
 @media (max-width: 300px) {
