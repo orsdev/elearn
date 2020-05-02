@@ -15,7 +15,8 @@
 .DS_Store
 debug.log
 .env.development
-# .env-cmdrc
+.env.production
+.env
 .env.local
 .env.development.local
 .env.test.local
