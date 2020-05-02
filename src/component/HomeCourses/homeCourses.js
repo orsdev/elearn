@@ -11,9 +11,7 @@ class HomeCourses extends Component {
  state = {
   emptyCourses: false,
   courses: null,
-  toggleFavourite: false,
-  favouriteUrl: null,
-  favouriteMessage: ""
+  favouriteUrl: null
  }
 
  /*
@@ -33,6 +31,7 @@ class HomeCourses extends Component {
     })
    }
   }
+
  }
 
 
@@ -46,6 +45,7 @@ class HomeCourses extends Component {
    }
   }
 
+  //save all courses in a state
   if (this.props.auth) {
    if (this.props.allCourses !== prevProps.allCourses) {
 
@@ -68,6 +68,7 @@ class HomeCourses extends Component {
    }
   }
 
+  //save user favourite video in a state
   if (this.props.auth) {
 
    if (this.props.users.success !== prevProps.users.success
@@ -89,10 +90,6 @@ class HomeCourses extends Component {
  from favourite list function */
  favouriteVideo = (e) => {
 
-  this.setState({
-   favouriteMessage: ""
-  });
-
   let target = e.target;
   let id = target.id;
   let getAttributeFav = target.getAttribute('data-fav');
@@ -100,13 +97,17 @@ class HomeCourses extends Component {
   let getAttributeAuthor = target.getAttribute('data-author');
   let getAttributeDescription = target.getAttribute('data-description');
 
+  //get clicked favourite icon parent element
+  const elementParent = target.parentElement;
+  //create a new dom element(small)
+  const small = document.createElement('small');
+  small.textContent = "";
+
   let { email } = this.props.authData;
 
   if (getAttributeFav === 'remove') {
 
-   this.setState({
-    favouriteMessage: "removed from favourite"
-   });
+   small.textContent = "removed from favourite";
 
    target.className = "fa fa-heart-o";
    target.setAttribute("data-fav", "add");
@@ -125,9 +126,7 @@ class HomeCourses extends Component {
 
   } else {
 
-   this.setState({
-    favouriteMessage: "added to favourite"
-   });
+   small.textContent = "added to favourite";
 
    target.className = "fa fa-heart";
    target.setAttribute("data-fav", "remove");
@@ -143,20 +142,18 @@ class HomeCourses extends Component {
       url: id
      });
      jsonServer.patch('/students/' + email, { starred: data });
+
     });
+
 
   }
 
-  this.setState({
-   toggleFavourite: true
-  });
+  elementParent.append(small);
 
+  //set small(element) to empty string after 2seconds
   setTimeout(() => {
-   this.setState({
-    toggleFavourite: false
-   });
-
-  }, 3000)
+   small.textContent = "";
+  }, 2000);
 
  }
 
@@ -197,10 +194,6 @@ class HomeCourses extends Component {
          <h4 className="course-title">{value.title}</h4>
          <p className="course-about">{value.description}</p>
          <div className="course-body-footer">
-          {this.state.toggleFavourite ?
-           <small>{this.state.favouriteMessage}</small> :
-           null
-          }
           <p className="course-author">{value.author}</p>
           <i
            onClick={this.favouriteVideo}
