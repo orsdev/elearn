@@ -10,21 +10,21 @@ const setUp = (props = {}) => {
 
 describe('MessageModal Component', () => {
 
- test('Should render without error when props{errorMessage} is true', () => {
-  let wrapper = setUp({ errorMessage: true });
+ test('Should render without error when props{openModal} is true', () => {
+  let wrapper = setUp({ openModal: true });
   const component = findByAttr(wrapper, 'messageModal-component');
   expect(component.length).toBe(1);
  });
 
- test('Should render button when props{errorMessage} is true', () => {
-  let wrapper = setUp({ errorMessage: true });
+ test('Should render button when props{openModal} is true', () => {
+  let wrapper = setUp({ openModal: true });
   const button = findByAttr(wrapper, 'button');
   expect(button.length).toBe(1);
  });
 
  test('does not throw warning with expected props', () => {
   const expectedProps = {
-   errorMessage: true,
+   openModal: true,
    text: 'testing',
    closeModal: () => { }
   };
