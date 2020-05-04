@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import * as action from '../../store/action';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,89 +6,57 @@ import Notification from '../Notification/notification';
 import Spinner from '../Spinner/spinner';
 import jsonServer from '../../api/jsonServer';
 
-class HomeCourses extends Component {
+const HomeCourses = (props) => {
 
- state = {
-  emptyCourses: false,
-  courses: null,
-  favouriteUrl: null
- }
+ const [emptyCourses, setEmptyCourses] = useState(false);
+ const [courses, setCourses] = useState(null);
 
- /*
-  called componentDidMount to update states
-  again when you routes to another page
-  */
- componentDidMount() {
-  const { courses } = this.props.allCourses;
-  if (this.props.auth) {
-   if (courses.length !== 0) {
-    this.setState({
-     courses: courses
-    })
-   } else {
-    this.setState({
-     emptyCourses: true
-    })
-   }
+ useEffect(() => {
+
+  //get all courses when user is authenticated
+  if (props.auth) {
+   props.onGetAllCourses();
   }
 
- }
+ }, [props.auth])
 
+ useEffect(() => {
 
- componentDidUpdate(prevProps, prevState) {
-  /*
-  get all available course when user is authenticated
-  */
-  if (this.props.auth) {
-   if (this.props.auth !== prevProps.auth) {
-    this.props.onGetAllCourses();
-   }
-  }
+  if (props.auth) {
+   if (props.allCourses.courses
+    && props.allCourses.isSuccessful) {
 
-  //save all courses in a state
-  if (this.props.auth) {
-   if (this.props.allCourses !== prevProps.allCourses) {
-
-    const { courses } = this.props.allCourses;
-
+    const { courses } = props.allCourses;
     /*
-    update state(courses) if course is found
-    and state(emptyCourses) if none is found
+    update props(courses) if course is found
+    and props(emptyCourses) if none is found
     */
     if (courses.length !== 0) {
-     this.setState({
-      courses: courses
-     })
+     setCourses(courses)
     } else {
-     this.setState({
-      emptyCourses: true
-     })
+     setEmptyCourses(true)
     }
 
    }
   }
 
-  //save user favourite video in a state
-  if (this.props.auth) {
+ }, [props.allCourses]);
 
-   if (this.props.users.success !== prevProps.users.success
-    && this.props.users.user.length !== prevProps.users.user.length) {
+ useEffect(() => {
 
-    const favouriteUrl = this.props.users.user[0].starred.map(function (value) {
-     return value.url;
-    });
-
-    this.setState({
-     favouriteUrl: favouriteUrl
-    })
+  //re-update user's data
+  if (props.auth) {
+   if (props.authData) {
+    props.onGetUser('students?id=' + props.authData.email)
    }
   }
 
- }
+ }, [props.authData]);
+
 
  /* add and remove video 
  from favourite list function */
- favouriteVideo = (e) => {
+ const favouriteVideo = (e) => {
 
   let target = e.target;
   let id = target.id;
@@ -103,7 +71,7 @@ class HomeCourses extends Component {
   const small = document.createElement('small');
   small.textContent = "";
 
-  let { email } = this.props.authData;
+  let { email } = props.authData;
 
   if (getAttributeFav === 'remove') {
 
@@ -145,7 +113,6 @@ class HomeCourses extends Component {
 
     });
 
-
   }
 
   elementParent.append(small);
@@ -157,102 +124,100 @@ class HomeCourses extends Component {
 
  }
 
- render() {
+ if (props.auth && courses) {
 
-  let course;
-  let dataAtrribute;
-  let favourite;
+  if (courses) {
 
-  if (this.props.auth && this.props.allCourses.isSuccessful) {
+   var course = courses.map((value, index) => {
 
-   if (this.state.courses) {
+    if (props.users.success && props.users.user.length) {
 
-    course = this.state.courses.map((value, index) => {
+     const favouriteUrl = props.users.user[0].starred.map(function (value) {
+      return value.url;
+     });
 
-     if (this.props.users.success && this.props.users.user.length) {
+     if (favouriteUrl) {
+      //assign true of false if url is found
+      var favourite = favouriteUrl.includes(value.url);
+      var dataAtrribute;
 
-      if (this.state.favouriteUrl) {
-       //assign true of false if url is found
-       favourite = this.state.favouriteUrl.includes(value.url);
-
-       if (favourite) {
-        dataAtrribute = "remove";
-       } else {
-        dataAtrribute = "add";
-       }
+      if (favourite) {
+       dataAtrribute = "remove";
+      } else {
+       dataAtrribute = "add";
       }
      }
+    }
 
-     return (
-      <Fragment key={index}>
-       <div className="grid-item">
-        <video width="400" controls>
-         <source src={value.url} type="video/mp4" />
+    return (
+     <Fragment key={index}>
+      <div className="grid-item">
+       <video width="400" controls>
+        <source src={value.url} type="video/mp4" />
       Your browser does not support HTML5 video.
      </video>
-        <div className="course-body">
-         <h4 className="course-title">{value.title}</h4>
-         <p className="course-about">{value.description}</p>
-         <div className="course-body-footer">
-          <p className="course-author">{value.author}</p>
-          <i
-           onClick={this.favouriteVideo}
-           className={favourite ? "fa fa-heart" : "fa fa-heart-o"}
-           data-title={value.title}
-           data-author={value.author}
-           data-description={value.description}
-           data-fav={dataAtrribute}
-           aria-hidden="true"
-           id={value.url}></i>
-         </div>
+       <div className="course-body">
+        <h4 className="course-title">{value.title}</h4>
+        <p className="course-about">{value.description}</p>
+        <div className="course-body-footer">
+         <p className="course-author">{value.author}</p>
+         <i
+          onClick={favouriteVideo}
+          className={favourite ? "fa fa-heart" : "fa fa-heart-o"}
+          data-title={value.title}
+          data-author={value.author}
+          data-description={value.description}
+          data-fav={dataAtrribute}
+          aria-hidden="true"
+          id={value.url}></i>
         </div>
        </div>
-      </Fragment>
-     )
-    })
-   }
-  }
-
-  return (
-   <Fragment>
-    <div
-     className="home-courses"
-     data-test="home-courses">
-     <h2> Courses </h2>
-     {!this.props.auth ?
-      <Notification
-       text="Login to see available courses."
-      /> :
-      <div className="home-courses-container grid-container">
-       {course}
       </div>
-     }
-     {this.props.auth
-      && this.state.emptyCourses ?
-      <Notification
-       text="No course was found."
-      /> :
-      null
-     }
-     {this.props.auth
-      && !this.state.emptyCourses
-      && !this.state.courses
-      ?
-      <Spinner />
-      : null
-     }
-    </div>
-   </Fragment>
-  )
+     </Fragment>
+    )
+   })
+  }
  }
+
+ return (
+  <Fragment>
+   <div
+    className="home-courses"
+    data-test="home-courses">
+    <h2> Courses </h2>
+    {!props.auth ?
+     <Notification
+      text="Login to see available courses."
+     /> :
+     <div className="home-courses-container grid-container">
+      {course}
+     </div>
+    }
+    {props.auth
+     && emptyCourses ?
+     <Notification
+      text="No course was found."
+     /> :
+     null
+    }
+    {props.auth
+     && !emptyCourses
+     && !courses
+     ?
+     <Spinner />
+     : null
+    }
+   </div>
+  </Fragment>
+ )
 }
 
-const mapStateToProps = (state) => {
+const mappropsToProps = (props) => {
  return {
-  auth: state.authentication.auth,
-  authData: state.authentication.authData,
-  users: state.users,
-  allCourses: state.allCourses
+  auth: props.authentication.auth,
+  authData: props.authentication.authData,
+  users: props.users,
+  allCourses: props.allCourses
  }
 };
 
@@ -272,4 +237,4 @@ HomeCourses.propTypes = {
  onGetAllCourses: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeCourses);
+export default connect(mappropsToProps, mapDispatchToProps)(HomeCourses);
