@@ -26,19 +26,20 @@ const InstructorPage = (props) => {
  useEffect(() => {
 
   //save new users details in json-server
-  if (props.users.success
-   && props.users.user.length === 0) {
+  if (props.auth && props.authData) {
+   if (props.users.success
+    && props.users.user.length === 0) {
 
-   const data = {
-    id: props.authData.email,
-    name: props.authData.name,
-    courses: []
-   };
+    const data = {
+     id: props.authData.email,
+     name: props.authData.name,
+     courses: []
+    };
 
-   //save user data to json-server database
-   jsonServer.post('/tutors', data);
+    //save user data to json-server database
+    jsonServer.post('/tutors', data);
+   }
   }
-
  }, [props.users.success]);
 
  useEffect(() => {

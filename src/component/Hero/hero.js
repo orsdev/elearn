@@ -9,7 +9,23 @@ import GoogleLoginButton from '../Button/loginButton/googleLoginButton';
 const Hero = (props) => {
 
  useEffect(() => {
- }, [props.auth, props.users.success, props.authData]);
+
+  //save new users details in json-server
+  if (props.auth && props.authData) {
+   if (props.users.success
+    && props.users.user.length === 0) {
+    const data = {
+     id: props.authData.email,
+     name: props.authData.name,
+     starred: []
+    };
+    //save user data to json-server database
+    jsonServer.post('/students', data);
+   }
+
+  }
+
+ }, [props.users.success]);
 
  //Google auth success function
  const responseGoogle = (response) => {
@@ -23,19 +39,6 @@ const Hero = (props) => {
    }
   }
  };
-
- //save new users details in json-server
- if (props.users.success && props.users.user.length === 0) {
-
-  const data = {
-   id: props.authData.email,
-   name: props.authData.name,
-   starred: []
-  };
-  //save user data to json-server database
-  jsonServer.post('/students', data);
- }
-
 
  return (
   <div
