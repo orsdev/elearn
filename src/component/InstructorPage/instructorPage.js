@@ -14,7 +14,7 @@ const InstructorPage = (props) => {
 
   /*
    when user is authenticated
-   get user details from json-server(db)
+   get user details from Json-Server(db)
    */
   if (props.auth && props.authData) {
    const { email } = props.authData;
