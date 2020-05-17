@@ -808,6 +808,7 @@
   position: relative;
   height: 100%;
   z-index: 5;
+  flex: 1;
 }
 .favouriteCourses h2 {
   color: black;

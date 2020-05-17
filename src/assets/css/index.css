@@ -22,3 +22,9 @@ body {
   height: 100%;
   background-color: rgb(16, 16, 49);
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
